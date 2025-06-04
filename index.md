@@ -43,7 +43,7 @@ wget https://informatics.fas.harvard.edu/workshops/biotips/Biotips-workshop-2024
 
 View the rendered version with the exercises and solutions:
 
-[Biotips workshop Day 1 - Genomics formats & tools, part 1 :material-arrow-right:](https://informatics.fas.harvard.edu/workshops/biotips/Biotips-workshop-2024-Day1/){ .md-button }
+[Biotips workshop Day 1 - Genomics formats & tools, part 1 :material-arrow-right:](Biotips-workshop-2024-Day1.md){ .md-button }
 
 Download the data files used in the exercises (local setup only):
 
@@ -68,7 +68,7 @@ wget https://informatics.fas.harvard.edu/workshops/biotips/Biotips-workshop-2024
 
 View the rendered version with the exercises and solutions:
 
-[Biotips workshop Day 2 - Genomics formats & tools, part 2 :material-arrow-right:](https://informatics.fas.harvard.edu/workshops/biotips/Biotips-workshop-2024-Day2/){ .md-button }
+[Biotips workshop Day 2 - Genomics formats & tools, part 2 :material-arrow-right:](Biotips-workshop-2024-Day2.md){ .md-button }
 
 Download the data files used in the exercises (local setup only):
 
@@ -93,7 +93,7 @@ wget https://informatics.fas.harvard.edu/workshops/biotips/Biotips-workshop-2024
 
 View the rendered version with the exercises and solutions:
 
-[Biotips workshop Day 3 - Shell scripting, part 1 :material-arrow-right:](https://informatics.fas.harvard.edu/workshops/biotips/Biotips-workshop-2024-Day3/){ .md-button }
+[Biotips workshop Day 3 - Shell scripting, part 1 :material-arrow-right:](Biotips-workshop-2024-Day3.md){ .md-button }
 
 Download the data files used in the exercises (local setup only):
 
@@ -118,7 +118,7 @@ wget https://informatics.fas.harvard.edu/workshops/biotips/Biotips-workshop-2024
 
 View the rendered version with the exercises and solutions:
 
-[Biotips workshop Day 4 - Shell scripting, part 2 :material-arrow-right:](https://informatics.fas.harvard.edu/workshops/biotips/Biotips-workshop-2024-Day4/){ .md-button }
+[Biotips workshop Day 4 - Shell scripting, part 2 :material-arrow-right:](Biotips-workshop-2024-Day4.md){ .md-button }
 
 Download the data files used in the exercises (local setup only):
 
