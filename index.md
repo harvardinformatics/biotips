@@ -12,7 +12,7 @@ This workshop assumes you have some basic knowledge of the Linux command line. I
 
 This workshops requires substantial setup before class, so please read through the instructions below and make sure you have everything ready before the workshop starts. Please contact us at least 24 hours before the workshop if you have any questions or issues.
 
-We **_strongly recommend_** that you run these workshops on the [FASRC Cannon cluster :octicons-link-external-24:](https://www.rc.fas.harvard.edu/cluster/) so that you can use the same environment as the instructors:
+We **_strongly recommend_** that you run these workshops on the [FASRC Cannon cluster :octicons-link-external-24:](https://www.rc.fas.harvard.edu/cluster/){:target="_blank"} so that you can use the same environment as the instructors:
 
 [Biotips setup - Cannon :material-arrow-right:](setup-cannon.md){ .md-button .md-button--primary .centered }
 
@@ -28,11 +28,11 @@ Workshop content is available below. R Markdown (.Rmd) files with exercises and 
 
 ### Day 1: Bioinformatics tools and file formats 1
 
-Wednesday February 21st, 9:30 am - 12:30 pm, Location: [Northwest Building :octicons-link-external-24:](https://maps.app.goo.gl/1MqNswcVaTYcCx68A) room 453 
+Wednesday February 21st, 9:30 am - 12:30 pm, Location: [Northwest Building :octicons-link-external-24:](https://maps.app.goo.gl/1MqNswcVaTYcCx68A){:target="_blank"} room 453 
 
 * Sequence file formats: FASTA, FASTQ
 * Intro to commands useful for bioinformatics: `grep`, `awk`
-* Alignment file formats: BAM/SAM, [`samtools` :octicons-link-external-24:](http://www.htslib.org/)
+* Alignment file formats: BAM/SAM, [`samtools` :octicons-link-external-24:](http://www.htslib.org/){:target="_blank"}
 * Introduction to piping and redirecting output
 
 Download the R Markdown file for the exercises and solutions:
@@ -53,12 +53,12 @@ wget https://harvardinformatics.github.io/workshops/2024-spring/biotips/data1.zi
 
 ### Day 2: Bioinformatics tools and file formats 2
 
-Thursday February 22nd, 9:30 am - 12:30 pm, Location: [Biolabs :octicons-link-external-24:](https://maps.app.goo.gl/mtqAuyd1HwFRLJyZ6) room 2062/2064 
+Thursday February 22nd, 9:30 am - 12:30 pm, Location: [Biolabs :octicons-link-external-24:](https://maps.app.goo.gl/mtqAuyd1HwFRLJyZ6){:target="_blank"} room 2062/2064 
 
 * More on piping and redirecting output
 * Interval files: bed, GFF
 * More on `grep` and `awk`
-* Intro to [`bedtools` :octicons-link-external-24:](https://bedtools.readthedocs.io/en/latest/index.html)
+* Intro to [`bedtools` :octicons-link-external-24:](https://bedtools.readthedocs.io/en/latest/index.html){:target="_blank"}
 
 Download the R Markdown file for the exercises and solutions:
 
@@ -78,11 +78,11 @@ wget https://harvardinformatics.github.io/workshops/2024-spring/biotips/data2.zi
 
 ### Day 3: Shell scripting 1
 
-Wednesday February 28th, 9:30 am - 12:30 pm, Location: [Northwest Building :octicons-link-external-24:](https://maps.app.goo.gl/1MqNswcVaTYcCx68A) room 353 (NOTE ROOM CHANGE FROM DAY 1)
+Wednesday February 28th, 9:30 am - 12:30 pm, Location: [Northwest Building :octicons-link-external-24:](https://maps.app.goo.gl/1MqNswcVaTYcCx68A){:target="_blank"} room 353 (NOTE ROOM CHANGE FROM DAY 1)
 
 * More about interval files: bed, GFF
 * Variant files: VCF
-* Introduction to [`bcftools` :octicons-link-external-24:](https://samtools.github.io/bcftools/bcftools.html)
+* Introduction to [`bcftools` :octicons-link-external-24:](https://samtools.github.io/bcftools/bcftools.html){:target="_blank"}
 * Shell scripting
 
 Download the R Markdown file for the exercises and solutions:
@@ -103,7 +103,7 @@ wget https://harvardinformatics.github.io/workshops/2024-spring/biotips/data3.zi
 
 ### Day 4: Shell scripting 2
 
-Thursday February 29th, 9:30 am - 12:30 pm, Location: [Biolabs :octicons-link-external-24:](https://maps.app.goo.gl/mtqAuyd1HwFRLJyZ6) room 2062/2064 
+Thursday February 29th, 9:30 am - 12:30 pm, Location: [Biolabs :octicons-link-external-24:](https://maps.app.goo.gl/mtqAuyd1HwFRLJyZ6){:target="_blank"} room 2062/2064 
 
 * Loops
 * Conditional statements

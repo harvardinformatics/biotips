@@ -43,7 +43,7 @@ These are instructions for those who have or can request a FASRC account and hav
 
 You will need a FASRC account to be able to login to the VPN and the cluster to follow along in the workshop. If you do not have one, please use the link below to request one. 
 
-[How to: Request FASRC account :octicons-link-external-24:](https://docs.rc.fas.harvard.edu/kb/how-do-i-get-a-research-computing-account/){ .md-button .md-button--primary .centered }
+[How to: Request FASRC account :octicons-link-external-24:](https://docs.rc.fas.harvard.edu/kb/how-do-i-get-a-research-computing-account/){:target="_blank" .md-button .md-button--primary .centered }
 
 If you already have an account, please confirm you can login before class. 
 
@@ -51,13 +51,13 @@ If you already have an account, please confirm you can login before class.
 
 In this workshop, we will be connecting to the cluster through a virtual desktop in order to view the workshop notebook in RStudio. In order to connect to the cluster in this way, you must set-up a connection with the FASRC VPN (Virtual Private Network). See the link below for instructions on how to do so. 
 
-[How to: Setup FASRC VPN :octicons-link-external-24:](https://docs.rc.fas.harvard.edu/kb/vpn-setup/){ .md-button .md-button--primary .centered }
+[How to: Setup FASRC VPN :octicons-link-external-24:](https://docs.rc.fas.harvard.edu/kb/vpn-setup/){:target="_blank" .md-button .md-button--primary .centered }
 
 ### 3. RStudio theough the Virtual Desktop
 
 In this workshop, we'll be opening files that contain example code blocks and exercises in the RStudio program while connected to the Virtual Desktop (VDI). Read the link below for more information about the VDI: 
 
-[How to: VDI :octicons-link-external-24:](https://docs.rc.fas.harvard.edu/kb/virtual-desktop/){ .md-button .md-button--primary .centered }
+[How to: VDI :octicons-link-external-24:](https://docs.rc.fas.harvard.edu/kb/virtual-desktop/){:target="_blank" .md-button .md-button--primary .centered }
 
 Feel free to try this before class, but we will be able to help you connect during class. 
 
@@ -75,9 +75,9 @@ There are several steps to get set up for the workshop. Please follow these inst
     When logging in to the VDI you will login with just your FAS RC account name:
     > username
 
-1. Connect to the VPN as described in the [link above :octicons-link-external-24:](https://docs.rc.fas.harvard.edu/kb/vpn-setup/), using username@fasrc. 
+1. Connect to the VPN as described in the [link above :octicons-link-external-24:](https://docs.rc.fas.harvard.edu/kb/vpn-setup/){:target="_blank"}, using username@fasrc. 
 
-2. Log-in to the VDI as described in the [link above :octicons-link-external-24:](https://docs.rc.fas.harvard.edu/kb/virtual-desktop/), using username. You should see something like the following: 
+2. Log-in to the VDI as described in the [link above :octicons-link-external-24:](https://docs.rc.fas.harvard.edu/kb/virtual-desktop/){:target="_blank"}, using username. You should see something like the following: 
 
     ![VDI login](img/setup-1.png)
 
@@ -123,9 +123,9 @@ On the day of class, use the following instructions to open the RStudio app on t
     When logging in to the VDI you will login with just your FAS RC account name:
     > username
 
-1. Connect to the VPN as described in the [link above :octicons-link-external-24:](https://docs.rc.fas.harvard.edu/kb/vpn-setup/), using username@fasrc. 
+1. Connect to the VPN as described in the [link above :octicons-link-external-24:](https://docs.rc.fas.harvard.edu/kb/vpn-setup/){:target="_blank"}, using username@fasrc. 
 
-2. Log-in to the VDI as described in the [link above :octicons-link-external-24:](https://docs.rc.fas.harvard.edu/kb/virtual-desktop/), using username. You should see something like the following: 
+2. Log-in to the VDI as described in the [link above :octicons-link-external-24:](https://docs.rc.fas.harvard.edu/kb/virtual-desktop/){:target="_blank"}, using username. You should see something like the following: 
 
     ![VDI login](img/setup-1.png)
 

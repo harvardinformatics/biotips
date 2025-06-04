@@ -35,7 +35,7 @@ These are instructions for those who cannot request a FASRC account and access t
 
  If you have or can request a FASRC account, we **highly recommend** you do so and follow the [Cannon setup instructions](setup-cannon.md).
 
- ## Before Class
+## Before Class
 
  There are several things you'll need to do BEFORE class. For those of us without a FASRC account, we'll be installing some software locally on our computers and downloading the workshop data. 
 
@@ -43,11 +43,11 @@ These are instructions for those who cannot request a FASRC account and access t
 
     Please confirm you have followed the instructions on this page BEFORE class by replying to the e-mail you received about the workshop. You may come to our [office hours or arrange to meet with us individually](https://informatics.fas.harvard.edu/contact/) for help, but we will unfortunately be UNABLE to help you with these steps during class. 
 
-### 0. Installing WSL
+### 0. Installing WSL - Windows Only
 
-For Windows users, you'll need to install a Linux distribution within your Windows operating system. Don't worry! This is easy now with the Windows Subsystem for Linux (WSL). Follow the link below for instructions on how to install WSL: 
+**For Windows users only**, you'll need to install a Linux distribution within your Windows operating system. Don't worry! This is easy now with the Windows Subsystem for Linux (WSL). Follow the link below for instructions on how to install WSL: 
 
-[How to: Install WSL :octicons-link-external-24:](https://docs.microsoft.com/en-us/windows/wsl/install){ .md-button .md-button--primary .centered }
+[How to: Install WSL :octicons-link-external-24:](https://docs.microsoft.com/en-us/windows/wsl/install){:target="_blank" .md-button .md-button--primary .centered }
 
 This may take some time, and your computer may restart a few times. Once WSL is installed, you'll have a Linux terminal available to you in Windows. You can open this terminal by typing "wsl" in the search bar and clicking the app that appears: 
 
@@ -57,7 +57,7 @@ Also, once you have WSL installed, your Linux distribution will appear in your W
 
 ![WSL file explorer](img/wsl-1.png)
 
-### 1. Installing [mamba :octicons-link-external-24:](https://mamba.io/docs/getting_started.html)
+### 1. Installing [mamba :octicons-link-external-24:](https://mamba.io/docs/getting_started.html){:target="_blank"}
 
 Mamba is a package manager that allows us to easily install other software. You'll need to install mamba to install the other software you'll need for the workshop. Follow the instructions below to install mamba.
 
@@ -91,7 +91,7 @@ conda init zsh
 
 For Windows, you'll need to install mamba (aka miniforge) via your new Linux terminal (WSL). Open the terminal and follow the instructions at the link below to install mamba: 
 
-[How to: Install mamba :octicons-link-external-24:](https://github.com/conda-forge/miniforge?tab=readme-ov-file#unix-like-platforms-macos-linux--wsl){ .md-button .md-button--primary .centered }
+[How to: Install mamba :octicons-link-external-24:](https://github.com/conda-forge/miniforge?tab=readme-ov-file#unix-like-platforms-macos-linux--wsl){:target="_blank" .md-button .md-button--primary .centered }
 
 Follow the on-screen prompts to complete installation. Restart your terminal and you should be able to use mamba. 
 
