@@ -28,7 +28,6 @@ title: Biotips workshop - Local setup
         display: inline-flex !important;
     }
     /* Center the text in the button */
-    
 </style>
 
 These are instructions for those who cannot request a FASRC account and access the Cannon cluster! Data will be downloaded locally and you will need to install software on your computer to follow along with the workshop. Please confirm you have followed the instructions on this page BEFORE class by replying to the e-mail you received about the workshop. We will unfortunately be UNABLE to help you with these steps during class.
