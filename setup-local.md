@@ -2,6 +2,35 @@
 title: Biotips workshop - Local setup
 ---
 
+<style>
+    table thead { display: none; }
+    .md-typeset table, 
+    .md-typeset th, 
+    .md-typeset td {
+        border: none !important;
+    }
+    /* Remove borders from table, th, and td */
+
+    .md-typeset__table tr:nth-child(even):hover,
+    .md-typeset__table tbody tr:nth-child(even):hover {
+        background-color: #f6f8fa !important;
+    }
+    .md-typeset__table tr:nth-child(odd):hover,
+    .md-typeset__table tbody tr:nth-child(odd):hover {
+        background-color: #ffffff !important;
+    }
+    /* Disable hover effect on table rows */
+
+    .md-button {
+        text-align: center !important;
+        justify-content: center !important;
+        align-items: center !important;
+        display: inline-flex !important;
+    }
+    /* Center the text in the button */
+    
+</style>
+
 These are instructions for those who cannot request a FASRC account and access the Cannon cluster! Data will be downloaded locally and you will need to install software on your computer to follow along with the workshop. Please confirm you have followed the instructions on this page BEFORE class by replying to the e-mail you received about the workshop. We will unfortunately be UNABLE to help you with these steps during class.
 
  If you have or can request a FASRC account, we **highly recommend** you do so and follow the [Cannon setup instructions](setup-cannon.md).
@@ -18,7 +47,7 @@ These are instructions for those who cannot request a FASRC account and access t
 
 For Windows users, you'll need to install a Linux distribution within your Windows operating system. Don't worry! This is easy now with the Windows Subsystem for Linux (WSL). Follow the link below for instructions on how to install WSL: 
 
-[How to: Install WSL](https://docs.microsoft.com/en-us/windows/wsl/install){ .md-button .md-button--primary .centered }
+[How to: Install WSL :octicons-link-external-24:](https://docs.microsoft.com/en-us/windows/wsl/install){ .md-button .md-button--primary .centered }
 
 This may take some time, and your computer may restart a few times. Once WSL is installed, you'll have a Linux terminal available to you in Windows. You can open this terminal by typing "wsl" in the search bar and clicking the app that appears: 
 
@@ -62,7 +91,7 @@ conda init zsh
 
 For Windows, you'll need to install mamba (aka miniforge) via your new Linux terminal (WSL). Open the terminal and follow the instructions at the link below to install mamba: 
 
-[How to: Install mamba](https://github.com/conda-forge/miniforge?tab=readme-ov-file#unix-like-platforms-macos-linux--wsl){ .md-button .md-button--primary .centered }
+[How to: Install mamba :octicons-link-external-24:](https://github.com/conda-forge/miniforge?tab=readme-ov-file#unix-like-platforms-macos-linux--wsl){ .md-button .md-button--primary .centered }
 
 Follow the on-screen prompts to complete installation. Restart your terminal and you should be able to use mamba. 
 
@@ -226,4 +255,6 @@ Please open this file in any text editor you like and take a look at the content
 
 We also provide the rendered .html files for each day, complete with solutions to exercises:
 
-[Day 1 - Genomics formats & tools, part 1](https://harvardinformatics.github.io/workshops/2024-spring/biotips/Biotips-workshop-2024-Day1-instructor.html){ .md-button } - [Day 2 - Genomics formats & tools, part 2](https://harvardinformatics.github.io/workshops/2024-spring/biotips/Biotips-workshop-2024-Day2-instructor.html){ .md-button } - [Day 3 - Shell scripting, part 1](https://harvardinformatics.github.io/workshops/2024-spring/biotips/Biotips-workshop-2024-Day3-instructor.html){ .md-button } - [Day 4 - Shell scripting, part 2](https://harvardinformatics.github.io/workshops/2024-spring/biotips/Biotips-workshop-2024-Day4-instructor.html){ .md-button }
+|     |     |     |     |
+| --- | --- | --- | --- |
+| [Day 1 - Genomics formats & tools, part 1 :material-arrow-right:](https://harvardinformatics.github.io/workshops/2024-spring/biotips/Biotips-workshop-2024-Day1-instructor.html){ .md-button } | [Day 2 - Genomics formats & tools, part 2 :material-arrow-right:](https://harvardinformatics.github.io/workshops/2024-spring/biotips/Biotips-workshop-2024-Day2-instructor.html){ .md-button } | [Day 3 - Shell scripting, part 1 :material-arrow-right:](https://harvardinformatics.github.io/workshops/2024-spring/biotips/Biotips-workshop-2024-Day3-instructor.html){ .md-button } | [Day 4 - Shell scripting, part 2 :material-arrow-right:](https://harvardinformatics.github.io/workshops/2024-spring/biotips/Biotips-workshop-2024-Day4-instructor.html){ .md-button } |

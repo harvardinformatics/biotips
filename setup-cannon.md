@@ -2,6 +2,35 @@
 title: Biotips workshop - Cannon setup
 ---
 
+<style>
+    table thead { display: none; }
+    .md-typeset table, 
+    .md-typeset th, 
+    .md-typeset td {
+        border: none !important;
+    }
+    /* Remove borders from table, th, and td */
+
+    .md-typeset__table tr:nth-child(even):hover,
+    .md-typeset__table tbody tr:nth-child(even):hover {
+        background-color: #f6f8fa !important;
+    }
+    .md-typeset__table tr:nth-child(odd):hover,
+    .md-typeset__table tbody tr:nth-child(odd):hover {
+        background-color: #ffffff !important;
+    }
+    /* Disable hover effect on table rows */
+
+    .md-button {
+        text-align: center !important;
+        justify-content: center !important;
+        align-items: center !important;
+        display: inline-flex !important;
+    }
+    /* Center the text in the button */
+    
+</style>
+
 These are instructions for those who have or can request a FASRC account and have access to the Cannon cluster! If you cannot have a FASRC account, we have tried to provided a way for you to follow along in the workshop, but you will have to follow a [different set of setup instructions](setup-local.md).
 
 !!! warning "Confirm you can login to the cluster before class!"
@@ -14,7 +43,7 @@ These are instructions for those who have or can request a FASRC account and hav
 
 You will need a FASRC account to be able to login to the VPN and the cluster to follow along in the workshop. If you do not have one, please use the link below to request one. 
 
-[How to: Request FASRC account](https://docs.rc.fas.harvard.edu/kb/how-do-i-get-a-research-computing-account/){ .md-button .md-button--primary .centered }
+[How to: Request FASRC account :octicons-link-external-24:](https://docs.rc.fas.harvard.edu/kb/how-do-i-get-a-research-computing-account/){ .md-button .md-button--primary .centered }
 
 If you already have an account, please confirm you can login before class. 
 
@@ -22,13 +51,13 @@ If you already have an account, please confirm you can login before class.
 
 In this workshop, we will be connecting to the cluster through a virtual desktop in order to view the workshop notebook in RStudio. In order to connect to the cluster in this way, you must set-up a connection with the FASRC VPN (Virtual Private Network). See the link below for instructions on how to do so. 
 
-[How to: Setup FASRC VPN](https://docs.rc.fas.harvard.edu/kb/vpn-setup/){ .md-button .md-button--primary .centered }
+[How to: Setup FASRC VPN :octicons-link-external-24:](https://docs.rc.fas.harvard.edu/kb/vpn-setup/){ .md-button .md-button--primary .centered }
 
 ### 3. RStudio theough the Virtual Desktop
 
 In this workshop, we'll be opening files that contain example code blocks and exercises in the RStudio program while connected to the Virtual Desktop (VDI). Read the link below for more information about the VDI: 
 
-[How to: VDI](https://docs.rc.fas.harvard.edu/kb/virtual-desktop/){ .md-button .md-button--primary .centered }
+[How to: VDI :octicons-link-external-24:](https://docs.rc.fas.harvard.edu/kb/virtual-desktop/){ .md-button .md-button--primary .centered }
 
 Feel free to try this before class, but we will be able to help you connect during class. 
 
@@ -203,4 +232,6 @@ wget https://harvardinformatics.github.io/workshops/2024-spring/biotips/Biotips-
 
 We also provide the rendered .html files for each day, complete with solutions to exercises:
 
-[Day 1 - Genomics formats & tools, part 1](https://harvardinformatics.github.io/workshops/2024-spring/biotips/Biotips-workshop-2024-Day1-instructor.html){ .md-button } - [Day 2 - Genomics formats & tools, part 2](https://harvardinformatics.github.io/workshops/2024-spring/biotips/Biotips-workshop-2024-Day2-instructor.html){ .md-button } - [Day 3 - Shell scripting, part 1](https://harvardinformatics.github.io/workshops/2024-spring/biotips/Biotips-workshop-2024-Day3-instructor.html){ .md-button } - [Day 4 - Shell scripting, part 2](https://harvardinformatics.github.io/workshops/2024-spring/biotips/Biotips-workshop-2024-Day4-instructor.html){ .md-button }
+|     |     |     |     |
+|-----|-----|-----|-----|
+| [Day 1 - Genomics formats & tools, part 1 :material-arrow-right:](https://harvardinformatics.github.io/workshops/2024-spring/biotips/Biotips-workshop-2024-Day1-instructor.html){ .md-button } | [Day 2 - Genomics formats & tools, part 2 :material-arrow-right:](https://harvardinformatics.github.io/workshops/2024-spring/biotips/Biotips-workshop-2024-Day2-instructor.html){ .md-button } | [Day 3 - Shell scripting, part 1 :material-arrow-right:](https://harvardinformatics.github.io/workshops/2024-spring/biotips/Biotips-workshop-2024-Day3-instructor.html){ .md-button } | [Day 4 - Shell scripting, part 2 :material-arrow-right:](https://harvardinformatics.github.io/workshops/2024-spring/biotips/Biotips-workshop-2024-Day4-instructor.html){ .md-button } |

@@ -14,11 +14,11 @@ This workshops requires substantial setup before class, so please read through t
 
 We **_strongly recommend_** that you run these workshops on the [FASRC Cannon cluster](https://www.rc.fas.harvard.edu/cluster/) so that you can use the same environment as the instructors:
 
-[Biotips setup - Cannon](setup-cannon.md){ .md-button .md-button--primary .centered }
+[Biotips setup - Cannon :material-arrow-right:](setup-cannon.md){ .md-button .md-button--primary .centered }
 
 We also provide instructions for running the workshop on your local machine, but you will need to install the required software and packages yourself:
 
-[Biotips setup - Local](setup-local.md){ .md-button .md-button--primary .centered }
+[Biotips setup - Local :material-arrow-right:](setup-local.md){ .md-button .md-button--primary .centered }
 
 ---
 
@@ -43,7 +43,7 @@ wget https://harvardinformatics.github.io/workshops/2024-spring/biotips/Biotips-
 
 View the rendered version with the exercises and solutions:
 
-[Biotips workshop Day 1 - Genomics formats & tools, part 1](https://harvardinformatics.github.io/workshops/2024-spring/biotips/Biotips-workshop-2024-Day1-instructor.html){ .md-button }
+[Biotips workshop Day 1 - Genomics formats & tools, part 1 :material-arrow-right:](https://harvardinformatics.github.io/workshops/2024-spring/biotips/Biotips-workshop-2024-Day1-instructor.html){ .md-button }
 
 Download the data files used in the exercises (local setup only):
 
@@ -68,7 +68,7 @@ wget https://harvardinformatics.github.io/workshops/2024-spring/biotips/Biotips-
 
 View the rendered version with the exercises and solutions:
 
-[Biotips workshop Day 2 - Genomics formats & tools, part 2](https://harvardinformatics.github.io/workshops/2024-spring/biotips/Biotips-workshop-2024-Day2-instructor.html){ .md-button }
+[Biotips workshop Day 2 - Genomics formats & tools, part 2 :material-arrow-right:](https://harvardinformatics.github.io/workshops/2024-spring/biotips/Biotips-workshop-2024-Day2-instructor.html){ .md-button }
 
 Download the data files used in the exercises (local setup only):
 
@@ -93,7 +93,7 @@ wget https://harvardinformatics.github.io/workshops/2024-spring/biotips/Biotips-
 
 View the rendered version with the exercises and solutions:
 
-[Biotips workshop Day 3 - Shell scripting, part 1](https://harvardinformatics.github.io/workshops/2024-spring/biotips/Biotips-workshop-2024-Day3-instructor.html){ .md-button }
+[Biotips workshop Day 3 - Shell scripting, part 1 :material-arrow-right:](https://harvardinformatics.github.io/workshops/2024-spring/biotips/Biotips-workshop-2024-Day3-instructor.html){ .md-button }
 
 Download the data files used in the exercises (local setup only):
 
@@ -118,7 +118,7 @@ wget https://harvardinformatics.github.io/workshops/2024-spring/biotips/Biotips-
 
 View the rendered version with the exercises and solutions:
 
-[Biotips workshop Day 4 - Shell scripting, part 2](https://harvardinformatics.github.io/workshops/2024-spring/biotips/Biotips-workshop-2024-Day4-instructor.html){ .md-button }
+[Biotips workshop Day 4 - Shell scripting, part 2 :material-arrow-right:](https://harvardinformatics.github.io/workshops/2024-spring/biotips/Biotips-workshop-2024-Day4-instructor.html){ .md-button }
 
 Download the data files used in the exercises (local setup only):
 
