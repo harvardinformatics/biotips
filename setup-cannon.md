@@ -75,9 +75,9 @@ There are several steps to get set up for the workshop. Please follow these inst
     When logging in to the VDI you will login with just your FAS RC account name:
     > username
 
-1. Connect to the VPN as described in the [link above](https://docs.rc.fas.harvard.edu/kb/vpn-setup/), using username@fasrc. 
+1. Connect to the VPN as described in the [link above :octicons-link-external-24:](https://docs.rc.fas.harvard.edu/kb/vpn-setup/), using username@fasrc. 
 
-2. Log-in to the VDI as described in the [link above](https://docs.rc.fas.harvard.edu/kb/virtual-desktop/), using username. You should see something like the following: 
+2. Log-in to the VDI as described in the [link above :octicons-link-external-24:](https://docs.rc.fas.harvard.edu/kb/virtual-desktop/), using username. You should see something like the following: 
 
     ![VDI login](img/setup-1.png)
 
@@ -123,9 +123,9 @@ On the day of class, use the following instructions to open the RStudio app on t
     When logging in to the VDI you will login with just your FAS RC account name:
     > username
 
-1. Connect to the VPN as described in the [link above](https://docs.rc.fas.harvard.edu/kb/vpn-setup/), using username@fasrc. 
+1. Connect to the VPN as described in the [link above :octicons-link-external-24:](https://docs.rc.fas.harvard.edu/kb/vpn-setup/), using username@fasrc. 
 
-2. Log-in to the VDI as described in the [link above](https://docs.rc.fas.harvard.edu/kb/virtual-desktop/), using username. You should see something like the following: 
+2. Log-in to the VDI as described in the [link above :octicons-link-external-24:](https://docs.rc.fas.harvard.edu/kb/virtual-desktop/), using username. You should see something like the following: 
 
     ![VDI login](img/setup-1.png)
 

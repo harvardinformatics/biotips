@@ -57,7 +57,7 @@ Also, once you have WSL installed, your Linux distribution will appear in your W
 
 ![WSL file explorer](img/wsl-1.png)
 
-### 1. Installing [mamba](https://mamba.io/docs/getting_started.html)
+### 1. Installing [mamba :octicons-link-external-24:](https://mamba.io/docs/getting_started.html)
 
 Mamba is a package manager that allows us to easily install other software. You'll need to install mamba to install the other software you'll need for the workshop. Follow the instructions below to install mamba.
 
@@ -119,7 +119,7 @@ Note that this will create a directory called "biotips-2024-workshop" in your cu
 
 Once you have mamba installed, you can load the workshop environment. We've created an environment file that contains all the software you'll need for the workshop. You can download this file from the link below: 
 
-[Download the environment file by clicking here](https://harvardinformatics.github.io/workshops/2024-spring/biotips/env.yml) or by running the following command in your terminal: 
+[Download the environment file by clicking here :octicons-download-24:](https://harvardinformatics.github.io/workshops/2024-spring/biotips/env.yml) or by running the following command in your terminal: 
 
 ```bash
 wget https://harvardinformatics.github.io/workshops/2024-spring/biotips/env.yml
@@ -167,7 +167,7 @@ Use the following links to download the data for each day.
 
 ##### Day 1 data download
 
-[Download the Day 1 workshop file by clicking here](https://harvardinformatics.github.io/workshops/2024-spring/biotips/data1.zip) or run the following command in your terminal: 
+[Download the Day 1 workshop file by clicking here :octicons-download-24:](https://harvardinformatics.github.io/workshops/2024-spring/biotips/data1.zip) or run the following command in your terminal: 
 
 ```bash
 wget https://harvardinformatics.github.io/workshops/2024-spring/biotips/data1.zip
@@ -175,7 +175,7 @@ wget https://harvardinformatics.github.io/workshops/2024-spring/biotips/data1.zi
 
 ##### Day 2 data download
 
-[Download the Day 2 workshop file by clicking here](https://harvardinformatics.github.io/workshops/2024-spring/biotips/data2.zip) or run the following command in your terminal: 
+[Download the Day 2 workshop file by clicking here :octicons-download-24:](https://harvardinformatics.github.io/workshops/2024-spring/biotips/data2.zip) or run the following command in your terminal: 
 
 ```bash
 wget https://harvardinformatics.github.io/workshops/2024-spring/biotips/data2.zip
@@ -183,14 +183,14 @@ wget https://harvardinformatics.github.io/workshops/2024-spring/biotips/data2.zi
 
 ##### Day 3 data download
 
-[Download the Day 3 workshop file by clicking here](https://harvardinformatics.github.io/workshops/2024-spring/biotips/data3.zip) or run the following command in your terminal: 
+[Download the Day 3 workshop file by clicking here :octicons-download-24:](https://harvardinformatics.github.io/workshops/2024-spring/biotips/data3.zip) or run the following command in your terminal: 
 
 ```bash
 wget https://harvardinformatics.github.io/workshops/2024-spring/biotips/data3.zip
 ```
 
 ##### Day 4 data download
-[Download the Day 4 workshop file by clicking here](https://harvardinformatics.github.io/workshops/2024-spring/biotips/data4.zip) or run the following command in your terminal: 
+[Download the Day 4 workshop file by clicking here :octicons-download-24:](https://harvardinformatics.github.io/workshops/2024-spring/biotips/data4.zip) or run the following command in your terminal: 
 
 ```bash
 wget https://harvardinformatics.github.io/workshops/2024-spring/biotips/data4.zip
@@ -208,7 +208,7 @@ Use the following links to download the workshop file for each day.
 
 ##### Day 1 workshop file
 
-[Download the Day 1 workshop file by clicking here](https://harvardinformatics.github.io/workshops/2024-spring/biotips/Biotips-workshop-2024-Day1-student.Rmd) or run the following command in your terminal: 
+[Download the Day 1 workshop file by clicking here :octicons-download-24:](https://harvardinformatics.github.io/workshops/2024-spring/biotips/Biotips-workshop-2024-Day1-student.Rmd) or run the following command in your terminal: 
 
 ```bash
 wget https://harvardinformatics.github.io/workshops/2024-spring/biotips/Biotips-workshop-2024-Day1-student.Rmd
@@ -216,7 +216,7 @@ wget https://harvardinformatics.github.io/workshops/2024-spring/biotips/Biotips-
 
 ##### Day 2 workshop file
 
-[Download the Day 2 workshop file by clicking here](https://harvardinformatics.github.io/workshops/2024-spring/biotips/Biotips-workshop-2024-Day2-student.Rmd) or run the following command in your terminal: 
+[Download the Day 2 workshop file by clicking here :octicons-download-24:](https://harvardinformatics.github.io/workshops/2024-spring/biotips/Biotips-workshop-2024-Day2-student.Rmd) or run the following command in your terminal: 
 
 ```bash
 wget https://harvardinformatics.github.io/workshops/2024-spring/biotips/Biotips-workshop-2024-Day2-student.Rmd
@@ -224,14 +224,14 @@ wget https://harvardinformatics.github.io/workshops/2024-spring/biotips/Biotips-
 
 ##### Day 3 workshop file
 
-[Download the Day 3 workshop file by clicking here](https://harvardinformatics.github.io/workshops/2024-spring/biotips/Biotips-workshop-2024-Day3-student.Rmd) or run the following command in your terminal: 
+[Download the Day 3 workshop file by clicking here :octicons-download-24:](https://harvardinformatics.github.io/workshops/2024-spring/biotips/Biotips-workshop-2024-Day3-student.Rmd) or run the following command in your terminal: 
 
 ```bash
 wget https://harvardinformatics.github.io/workshops/2024-spring/biotips/Biotips-workshop-2024-Day3-student.Rmd
 ```
 
 ##### Day 4 workshop file
-[Download the Day 4 workshop file by clicking here](https://harvardinformatics.github.io/workshops/2024-spring/biotips/Biotips-workshop-2024-Day4-student.Rmd) or run the following command in your terminal: 
+[Download the Day 4 workshop file by clicking here :octicons-download-24:](https://harvardinformatics.github.io/workshops/2024-spring/biotips/Biotips-workshop-2024-Day4-student.Rmd) or run the following command in your terminal: 
 
 ```bash
 wget https://harvardinformatics.github.io/workshops/2024-spring/biotips/Biotips-workshop-2024-Day4-student.Rmd
