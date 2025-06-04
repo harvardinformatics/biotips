@@ -38,17 +38,17 @@ Wednesday February 21st, 9:30 am - 12:30 pm, Location: [Northwest Building :octi
 Download the R Markdown file for the exercises and solutions:
 
 ```bash
-wget https://harvardinformatics.github.io/workshops/2024-spring/biotips/Biotips-workshop-2024-Day1-student.Rmd
+wget https://informatics.fas.harvard.edu/workshops/biotips/Biotips-workshop-2024-Day1-student.Rmd
 ```
 
 View the rendered version with the exercises and solutions:
 
-[Biotips workshop Day 1 - Genomics formats & tools, part 1 :material-arrow-right:](https://harvardinformatics.github.io/workshops/2024-spring/biotips/Biotips-workshop-2024-Day1-instructor.html){ .md-button }
+[Biotips workshop Day 1 - Genomics formats & tools, part 1 :material-arrow-right:](https://informatics.fas.harvard.edu/workshops/biotips/Biotips-workshop-2024-Day1/){ .md-button }
 
 Download the data files used in the exercises (local setup only):
 
 ```bash
-wget https://harvardinformatics.github.io/workshops/2024-spring/biotips/data1.zip
+wget https://informatics.fas.harvard.edu/workshops/biotips/data/data1.zip
 ```
 
 ### Day 2: Bioinformatics tools and file formats 2
@@ -63,17 +63,17 @@ Thursday February 22nd, 9:30 am - 12:30 pm, Location: [Biolabs :octicons-link-ex
 Download the R Markdown file for the exercises and solutions:
 
 ```bash
-wget https://harvardinformatics.github.io/workshops/2024-spring/biotips/Biotips-workshop-2024-Day2-student.Rmd
+wget https://informatics.fas.harvard.edu/workshops/biotips/Biotips-workshop-2024-Day2-student.Rmd
 ```
 
 View the rendered version with the exercises and solutions:
 
-[Biotips workshop Day 2 - Genomics formats & tools, part 2 :material-arrow-right:](https://harvardinformatics.github.io/workshops/2024-spring/biotips/Biotips-workshop-2024-Day2-instructor.html){ .md-button }
+[Biotips workshop Day 2 - Genomics formats & tools, part 2 :material-arrow-right:](https://informatics.fas.harvard.edu/workshops/biotips/Biotips-workshop-2024-Day2/){ .md-button }
 
 Download the data files used in the exercises (local setup only):
 
 ```bash
-wget https://harvardinformatics.github.io/workshops/2024-spring/biotips/data2.zip
+wget https://informatics.fas.harvard.edu/workshops/biotips/data/data2.zip
 ```
 
 ### Day 3: Shell scripting 1
@@ -88,17 +88,17 @@ Wednesday February 28th, 9:30 am - 12:30 pm, Location: [Northwest Building :octi
 Download the R Markdown file for the exercises and solutions:
 
 ```bash
-wget https://harvardinformatics.github.io/workshops/2024-spring/biotips/Biotips-workshop-2024-Day3-student.Rmd
+wget https://informatics.fas.harvard.edu/workshops/biotips/Biotips-workshop-2024-Day3-student.Rmd
 ```
 
 View the rendered version with the exercises and solutions:
 
-[Biotips workshop Day 3 - Shell scripting, part 1 :material-arrow-right:](https://harvardinformatics.github.io/workshops/2024-spring/biotips/Biotips-workshop-2024-Day3-instructor.html){ .md-button }
+[Biotips workshop Day 3 - Shell scripting, part 1 :material-arrow-right:](https://informatics.fas.harvard.edu/workshops/biotips/Biotips-workshop-2024-Day3/){ .md-button }
 
 Download the data files used in the exercises (local setup only):
 
 ```bash
-wget https://harvardinformatics.github.io/workshops/2024-spring/biotips/data3.zip
+wget https://informatics.fas.harvard.edu/workshops/biotips/data/data3.zip
 ```
 
 ### Day 4: Shell scripting 2
@@ -113,15 +113,15 @@ Thursday February 29th, 9:30 am - 12:30 pm, Location: [Biolabs :octicons-link-ex
 Download the R Markdown file for the exercises and solutions:
 
 ```bash
-wget https://harvardinformatics.github.io/workshops/2024-spring/biotips/Biotips-workshop-2024-Day4-student.Rmd
+wget https://informatics.fas.harvard.edu/workshops/biotips/Biotips-workshop-2024-Day4-student.Rmd
 ```
 
 View the rendered version with the exercises and solutions:
 
-[Biotips workshop Day 4 - Shell scripting, part 2 :material-arrow-right:](https://harvardinformatics.github.io/workshops/2024-spring/biotips/Biotips-workshop-2024-Day4-instructor.html){ .md-button }
+[Biotips workshop Day 4 - Shell scripting, part 2 :material-arrow-right:](https://informatics.fas.harvard.edu/workshops/biotips/Biotips-workshop-2024-Day4/){ .md-button }
 
 Download the data files used in the exercises (local setup only):
 
 ```bash
-wget https://harvardinformatics.github.io/workshops/2024-spring/biotips/data4.zip
+wget https://informatics.fas.harvard.edu/workshops/biotips/data/data4.zip
 ```

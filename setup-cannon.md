@@ -170,24 +170,24 @@ On the day of class, use the following instructions to open the RStudio app on t
     **Day 1 download command:**
 
     ```bash
-    wget https://harvardinformatics.github.io/workshops/2024-spring/biotips/Biotips-workshop-2024-Day1-student.Rmd
+    wget https://informatics.fas.harvard.edu/workshops/biotips/Biotips-workshop-2024-Day1-student.Rmd
     ```
     **Day 2 download command:**
 
     ```bash
-    wget https://harvardinformatics.github.io/workshops/2024-spring/biotips/Biotips-workshop-2024-Day2-student.Rmd
+    wget https://informatics.fas.harvard.edu/workshops/biotips/Biotips-workshop-2024-Day2-student.Rmd
     ```
 
     **Day 3 download command:**
 
     ```bash
-    wget https://harvardinformatics.github.io/workshops/2024-spring/biotips/Biotips-workshop-2024-Day3-student.Rmd
+    wget https://informatics.fas.harvard.edu/workshops/biotips/Biotips-workshop-2024-Day3-student.Rmd
     ```
 
     **Day 4 download command:**
 
     ```bash
-    wget https://harvardinformatics.github.io/workshops/2024-spring/biotips/Biotips-workshop-2024-Day4-student.Rmd
+    wget https://informatics.fas.harvard.edu/workshops/biotips/Biotips-workshop-2024-Day4-student.Rmd
     ```
 
 10. Finally, in the file browser on the right, click on your `biotips-workshop-2024` folder. You should see the .Rmd file you just copied there. Click on it to open it in the text editor which will pop up on the left. This is where we will do the workshop exercises! We recommend adjusting the panel sizes so the text-editor is easy to view -- all exercises and output will be displayed here. 
@@ -207,25 +207,25 @@ These paths will become available as the date of the workshop approaches.
 #### Day 1 download command
 
 ```bash
-wget https://harvardinformatics.github.io/workshops/2024-spring/biotips/Biotips-workshop-2024-Day1-student.Rmd
+wget https://informatics.fas.harvard.edu/workshops/biotips/Biotips-workshop-2024-Day1-student.Rmd
 ```
 
 #### Day 2 download command
 
 ```bash
-wget https://harvardinformatics.github.io/workshops/2024-spring/biotips/Biotips-workshop-2024-Day2-student.Rmd
+wget https://informatics.fas.harvard.edu/workshops/biotips/Biotips-workshop-2024-Day2-student.Rmd
 ```
 
 #### Day 3 download command
 
 ```bash
-wget https://harvardinformatics.github.io/workshops/2024-spring/biotips/Biotips-workshop-2024-Day3-student.Rmd
+wget https://informatics.fas.harvard.edu/workshops/biotips/Biotips-workshop-2024-Day3-student.Rmd
 ```
 
 #### Day 4 download command
 
 ```bash
-wget https://harvardinformatics.github.io/workshops/2024-spring/biotips/Biotips-workshop-2024-Day4-student.Rmd
+wget https://informatics.fas.harvard.edu/workshops/biotips/Biotips-workshop-2024-Day4-student.Rmd
 ```
 
 ### Rendered workshop files
@@ -234,4 +234,4 @@ We also provide the rendered .html files for each day, complete with solutions t
 
 |     |     |     |     |
 |-----|-----|-----|-----|
-| [Day 1 - Genomics formats & tools, part 1 :material-arrow-right:](https://harvardinformatics.github.io/workshops/2024-spring/biotips/Biotips-workshop-2024-Day1-instructor.html){ .md-button } | [Day 2 - Genomics formats & tools, part 2 :material-arrow-right:](https://harvardinformatics.github.io/workshops/2024-spring/biotips/Biotips-workshop-2024-Day2-instructor.html){ .md-button } | [Day 3 - Shell scripting, part 1 :material-arrow-right:](https://harvardinformatics.github.io/workshops/2024-spring/biotips/Biotips-workshop-2024-Day3-instructor.html){ .md-button } | [Day 4 - Shell scripting, part 2 :material-arrow-right:](https://harvardinformatics.github.io/workshops/2024-spring/biotips/Biotips-workshop-2024-Day4-instructor.html){ .md-button } |
+| [Day 1 - Genomics formats & tools, part 1 :material-arrow-right:](https://informatics.fas.harvard.edu/workshops/biotips/Biotips-workshop-2024-Day1/){ .md-button } | [Day 2 - Genomics formats & tools, part 2 :material-arrow-right:](https://informatics.fas.harvard.edu/workshops/biotips/Biotips-workshop-2024-Day2/){ .md-button } | [Day 3 - Shell scripting, part 1 :material-arrow-right:](https://informatics.fas.harvard.edu/workshops/biotips/Biotips-workshop-2024-Day3/){ .md-button } | [Day 4 - Shell scripting, part 2 :material-arrow-right:](https://informatics.fas.harvard.edu/workshops/biotips/Biotips-workshop-2024-Day4/){ .md-button } |
