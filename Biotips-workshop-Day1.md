@@ -65,7 +65,7 @@ In the section above and throughout this workshop we use a lot of context depend
 
 In an attempt to offset this unintentional language barrier we provide tables with some contextual definitions of terms we may use throughout the workshop at the following link:
 
-[Computing Glossary :material-arrow-top-right:](/resources/glossary/){:target="_blank" .md-button .md-button--primary .centered }
+[Computing Glossary :material-arrow-top-right:](../../resources/glossary.md){:target="_blank" .md-button .md-button--primary .centered }
 
 If you see or hear any terms you think should be added to these tables, please let us know.
 
