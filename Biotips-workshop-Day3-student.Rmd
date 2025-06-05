@@ -1,18 +1,19 @@
 ---
-title: "Harvard Informatics Bioinformatics Tips Workshop"
-subtitle: "Day 3: VCF files and shell scripts"
+title: "Biotips Day 3: VCF files and shell scripts"
 date: "February 28, 2024"
 author: "Tim Sackton, Gregg Thomas, Lei Ma, Nathan Weeks"
-output: html_document
+output: 
+  html_document:
+    keep_md: true
 ---
 
-Welcome to the third day of the [FAS Informatics](https://informatics.fas.harvard.edu/) [Bioinformatics Tips and Tricks Workshop](https://harvardinformatics.github.io/workshops/2024-spring/biotips/)!
+Welcome to the third day of the [FAS Informatics](https://informatics.fas.harvard.edu/) Bioinformatics Tips and Tricks Workshop!
 
 Today we're going to continue our tour and explanation of common genomics file formats and their associated tools, starting with GFF files, which are typically used to store gene annotations. We'll then talk about VCF files, which are used to store variants. 
 
 In the second half of the workshop, we'll introduce some basic concepts about bash scripting, in preparation for day 4 which will be all about scripting.
 
-# Setting up our link to the data files
+## Setting up our link to the data files
 
 Like previous days, we'll make a link to the source data files for the day. Though for the beginning of the workshop we'll still be working with day 2 data in your `data2` folder.
 
@@ -22,16 +23,16 @@ Like previous days, we'll make a link to the source data files for the day. Thou
 
 mkdir -p data3
 ln -s -f /n/holylfs05/LABS/informatics/Everyone/workshop-data/biotips-2024/day3/* data3
-# ln: The Unix link command, which can create shortcuts to folders and files at the provided path to the second provided path
-# -s: This option tells ln to create a symbolic link rather than a hard link (original files are not changed)
-# -f: This option forces ln to create the link
+## ln: The Unix link command, which can create shortcuts to folders and files at the provided path to the second provided path
+## -s: This option tells ln to create a symbolic link rather than a hard link (original files are not changed)
+## -f: This option forces ln to create the link
 
 ls -l data3
-# Show the details of the files in the new linked directory
+## Show the details of the files in the new linked directory
 
 ```
 
-# GFF
+## GFF
 
 The format for encoding information about genic regions (commonly called a **genome annotation**) is the **GFF** format. GFF stands for *General Feature Format*. The specification has undergone two major revisions, with the most recent (and commonly-used) being GFF3. There is a related format, the **GTF** format, which stands for *General Transfer Format* but it is very similar to GFF (being an [extension to GFF2](https://genome.ucsc.edu/goldenPath/help/GTF.html)) and not as commonly used, so we will only talk about **GFF** files today. While GFF/GTF files are commonly used to store information about genes, they can store any location information, and share some similarities with bed files (which we discussed last week).
 
@@ -61,10 +62,10 @@ Let's take a look at a **GFF** file and talk about it a bit.
 ```bash
 
 grep -v "biological_region" -m50 data2/Macaca_mulatta.Mmul_8.0.1.86.chr.gff3
-# grep: The Unix string search command
-# -v: This option tells grep to print lines that DO NOT contain the following string
-# "biological_region": The string to search for in the provided file - we just don't want to display these for this demonstration
-# -m50: This option tells grep to only display the first 50 matches
+## grep: The Unix string search command
+## -v: This option tells grep to print lines that DO NOT contain the following string
+## "biological_region": The string to search for in the provided file - we just don't want to display these for this demonstration
+## -m50: This option tells grep to only display the first 50 matches
 
 ```
 
@@ -95,10 +96,10 @@ In other words, this code simply prints all lines in the **GFF** file that are a
 
 ```bash
 
-## Write awk command to count the number of genes in the macaque annotation
-# data2/Macaca_mulatta.Mmul_8.0.1.86.chr.gff3
+### Write awk command to count the number of genes in the macaque annotation
+## data2/Macaca_mulatta.Mmul_8.0.1.86.chr.gff3
 
-## Write awk command to count the number of genes in the macaque annotation
+### Write awk command to count the number of genes in the macaque annotation
 
 ```
 
@@ -107,22 +108,22 @@ In other words, this code simply prints all lines in the **GFF** file that are a
 
 ```bash
 
-## Write awk command to calculate average number of transcripts per gene
-# data2/Macaca_mulatta.Mmul_8.0.1.86.chr.gff3
+### Write awk command to calculate average number of transcripts per gene
+## data2/Macaca_mulatta.Mmul_8.0.1.86.chr.gff3
 
 
 
-## Write awk command to calculate average number of transcripts per gene
+### Write awk command to calculate average number of transcripts per gene
 
 ```
 
-## Comparing intervals - mixing GFF and bed files
+### Comparing intervals - mixing GFF and bed files
 
 Last week, we talked about bed files, and some tools to work with them, especially the program `bedtools`. The `bedtools` program can also work with GFF files natively. We'll return to the macaque SV dataset from last week for an example. 
 
 In the context of our macaque SVs, a natural question would be how many of the mutations affect genic regions, and may therefore affect some cellular function. To know this, we'll compare the SVs in our `.bed` file to the gene annotations in our `.gff` file.  
 
-# `bedtools intersect`
+## `bedtools intersect`
 
 So, how many of our SVs in our macaque population overlap with genes? For this we can use `bedtools intersect`, which takes two interval files (either **bed** or **GFF**) and calculates how many of the features overlap. Even though it takes **GFF** as input, we need to parse out the *gene* coordinates only.
 
@@ -131,12 +132,12 @@ So, how many of our SVs in our macaque population overlap with genes? For this w
 ```bash
 
 awk 'BEGIN{OFS="\t"} $3=="gene"{print "chr"$0}' data2/Macaca_mulatta.Mmul_8.0.1.86.chr.gff3 > macaque-genes.gff
-# awk: A command line scripting language command
-# '' : Within the single quotes is the user defined script for awk to run on the provided file
-# > : The Unix redirect operator to write the output of the command to the following file
+## awk: A command line scripting language command
+## '' : Within the single quotes is the user defined script for awk to run on the provided file
+## > : The Unix redirect operator to write the output of the command to the following file
 
 head macaque-genes.gff
-# Display the first few lines of the new file with head
+## Display the first few lines of the new file with head
 
 ```
 
@@ -149,14 +150,14 @@ Now we can get the overlaps between genes and SVs in our sample of macaques.
 ```bash
 
 bedtools intersect -a data2/macaque-svs-filtered.bed -b macaque-genes.gff > macaque-svs-genes-intersect.bed
-# bedtools: A suite of programs to process bed files
-# intersect: The sub-program of bedtools to execute
-# -a : The first interval file to check for overlaps
-# -b : The second interval file to check overlaps
+## bedtools: A suite of programs to process bed files
+## intersect: The sub-program of bedtools to execute
+## -a : The first interval file to check for overlaps
+## -b : The second interval file to check overlaps
 
 wc -l data2/macaque-svs-filtered.bed
 wc -l macaque-svs-genes-intersect.bed
-# Use wc -l to count the number of lines in the original bed file and those in the bed file that overlaps with genes
+## Use wc -l to count the number of lines in the original bed file and those in the bed file that overlaps with genes
 
 ```
 
@@ -167,7 +168,7 @@ Ok great, we've got only the SVs that overlap with genes in the macaque genome. 
 ```bash
 
 head macaque-svs-genes-intersect.bed
-# Display the first few lines of the bed file containing SVs that overlap with genes
+## Display the first few lines of the bed file containing SVs that overlap with genes
 
 ```
 
@@ -184,21 +185,21 @@ Exactly the same format as the input bed file, just with fewer lines. `bedtools 
 
 ```bash
 
-# data2/macaque-svs-filtered.bed
+## data2/macaque-svs-filtered.bed
 
-## Count SVs that DO NOT overlap with genes
+### Count SVs that DO NOT overlap with genes
 
-## Count SVs that DO NOT overlap with genes
-
-
-## Count SVs that have at least 90% of their sequence overlap with a gene
-
-## Count SVs that have at least 90% of their sequence overlap with a gene
+### Count SVs that DO NOT overlap with genes
 
 
-## Count SVs that have at least 90% of their sequence overlap with 90% of a gene's sequence (reciprocal overlap)
+### Count SVs that have at least 90% of their sequence overlap with a gene
 
-## Count SVs that have at least 90% of their sequence overlap with 90% of a gene's sequence (reciprocal overlap)
+### Count SVs that have at least 90% of their sequence overlap with a gene
+
+
+### Count SVs that have at least 90% of their sequence overlap with 90% of a gene's sequence (reciprocal overlap)
+
+### Count SVs that have at least 90% of their sequence overlap with 90% of a gene's sequence (reciprocal overlap)
 
 ```
 
@@ -209,16 +210,16 @@ Exactly the same format as the input bed file, just with fewer lines. `bedtools 
 ```bash
 
 bedtools intersect -wo -a data2/macaque-svs-filtered.bed -b macaque-genes.gff | head
-# bedtools: A suite of programs to process bed files
-# intersect: The sub-program of bedtools to execute
-# -wo : A bedtools intersect option that specifies to write both features and the number of overlapping bases to the output file
-# -a : The first interval file to check for overlaps
-# -b : The second interval file to check overlaps
-# | : The Unix pipe operator to pass output from one command as input to another command
+## bedtools: A suite of programs to process bed files
+## intersect: The sub-program of bedtools to execute
+## -wo : A bedtools intersect option that specifies to write both features and the number of overlapping bases to the output file
+## -a : The first interval file to check for overlaps
+## -b : The second interval file to check overlaps
+## | : The Unix pipe operator to pass output from one command as input to another command
 
 ```
 
-# VCF files
+## VCF files
 
 Another important type of genomic coordinate file is the **VCF** file, or *variant call format* file. This is another tab-delimited file that contains **variants** between a single genome or a sample of genomes and a reference genome. These variants can include single nucleotide changes, small insertions and deletions, or even larger structural variants. The most common type of variation you'll see in a **VCF** file are the single nucleotide ones, so the content of a **VCF** file is commonly referred to as *SNP calls*.
 
@@ -231,8 +232,8 @@ Let's take a look at our file and explain a bit about the format.
 ```bash
 
 head -n 43 data3/poeFor_NW_006799939.vcf 
-# head: A Unix command to display the first few lines of a file
-# -n 43: This tells head to display exactly the first 43 lines of the provided file
+## head: A Unix command to display the first few lines of a file
+## -n 43: This tells head to display exactly the first 43 lines of the provided file
 
 ```
 
@@ -245,11 +246,11 @@ Now that we know a bit about the header, let's look at the actual content of the
 ```bash
 
 grep -v "##" data3/poeFor_NW_006799939.vcf | head -n 2
-# grep: The Unix string search command
-# "##": The string to search for in the provided file - we just don't want to display these for this demonstration
-# head: A Unix command to display the first few lines of a file
-# | : The Unix pipe operator to pass output from one command as input to another command
-# -n 2: This tells head to display exactly the first 2 lines of the provided file
+## grep: The Unix string search command
+## "##": The string to search for in the provided file - we just don't want to display these for this demonstration
+## head: A Unix command to display the first few lines of a file
+## | : The Unix pipe operator to pass output from one command as input to another command
+## -n 2: This tells head to display exactly the first 2 lines of the provided file
 
 ```
 
@@ -285,11 +286,11 @@ There are many quirks to **VCF** files, but they are also highly standardized, s
 
 [VCF file specs](https://samtools.github.io/hts-specs/VCFv4.4.pdf)
 
-### Note that the binary version of **VCF** files are **BCF** files, usually with the `.bcf` file extension. BCF files are more efficient to read than VCF files, and are typically compressed.
+#### Note that the binary version of **VCF** files are **BCF** files, usually with the `.bcf` file extension. BCF files are more efficient to read than VCF files, and are typically compressed.
 
 There are a myriad of ways to use and analyze a **VCF**, but for general processing of them, we will use `bcftools`. [bcftools](https://samtools.github.io/bcftools/bcftools.html) springs under the same development umbrella as `samtools` and thus shares much of the same usage and underlying philosophy to act like a native Unix command. It was preceded by [vcftools](https://vcftools.github.io/), which still retains some useful functionality, but is no longer developed.
 
-# bcftools
+## bcftools
 
 Much like `bedtools`, `bcftools` has a wide range of functions so we won't be able to get to everything today. Be sure to read [the documentation](https://samtools.github.io/bcftools/bcftools.html) to find out if it can accomplish the task you need with your **VCF** or **BCF** file.
 
@@ -305,10 +306,10 @@ Like `samtools`, `bcftools` has a dedicated `view` command.
 
 ```bash
 
-## Use the view command to display the VCF file, then edit it to exclude the header
-## data3/poeFor_NW_006799939.vcf
+### Use the view command to display the VCF file, then edit it to exclude the header
+### data3/poeFor_NW_006799939.vcf
 bcftools view -H data3/poeFor_NW_006799939.vcf | head -n 10 | less -S
-## NOTE: ignore the "cannot write" error! This is just an artifact of our setup for the workshop today.
+### NOTE: ignore the "cannot write" error! This is just an artifact of our setup for the workshop today.
 
 ```
 
@@ -321,23 +322,23 @@ One useful function when `view`ing files is to be able to subset or filter them.
 ```bash
 
 cat data3/pop1.txt
-# cat: A Unix command that displays the contents of a file in the Terminal
-# This is just to see the pop1.txt file
+## cat: A Unix command that displays the contents of a file in the Terminal
+## This is just to see the pop1.txt file
 
 bcftools view -S data3/pop1.txt -H data3/poeFor_NW_006799939.vcf | head
-# bcftools: A suite of programs to process VCF files
-# view: The sub-program of bcftools to execute
-# -S : A bcftools view option that specifies to only extract genotype columns from the samples listed in the provided file
-# -H : A bcftools view option that specifies to exclude the VCF header from the output
-## NOTE: ignore the "cannot write" error! This is just an artifact of our setup for the workshop today.
+## bcftools: A suite of programs to process VCF files
+## view: The sub-program of bcftools to execute
+## -S : A bcftools view option that specifies to only extract genotype columns from the samples listed in the provided file
+## -H : A bcftools view option that specifies to exclude the VCF header from the output
+### NOTE: ignore the "cannot write" error! This is just an artifact of our setup for the workshop today.
 
 ```
 
-### A note about subsetting
+#### A note about subsetting
 
 This can be very handy, but be warned - the INFO fields are not automatically recalculated, and will no longer be correct once you remove some individuals. In general, the INFO column and its information displays information about the *site* while the FORMAT fields display information about each *sample*.
 
-# SNP density with `bcftools` and `bedtools`
+## SNP density with `bcftools` and `bedtools`
 
 Many of the tools we've demonstrated, `samtools`, `bedtools`, `bcftools`, are general purpose tools for basic processing and manipulation of specific file formats used in genomics. Many of the tasks they do could be done with native `bash` commands, but that would require a lot of piping and probably some custom scripting on uncompressed files. However, if you really start to get to know these tools and their versatility, you can do some more advanced analyses purely with them. Let's demonstrate by calculating SNP density across 100k windows the specific 7 Mb scaffold we are working with from the Amazon molly genome.
 
@@ -354,15 +355,15 @@ Since we've already downloaded the genome and generated the index file, let's st
 ```bash
 
 bedtools makewindows -g data3/poeFor_NW_006799939.fasta.fai -w 100000 > poeFor-windows-100k.bed
-# bedtools: A suite of programs to process bed files
-# makewindows: The sub-program of bedtools to execute
-# -g : A genome size file, which needs two columns, the scaffold/chromosome name and the size of that feature
-# -w : The size of the windows to partition each scaffold in -g into
-# -b : The second interval file to check overlaps
-# > : The Unix redirect operator to write the output of the command to the following file
+## bedtools: A suite of programs to process bed files
+## makewindows: The sub-program of bedtools to execute
+## -g : A genome size file, which needs two columns, the scaffold/chromosome name and the size of that feature
+## -w : The size of the windows to partition each scaffold in -g into
+## -b : The second interval file to check overlaps
+## > : The Unix redirect operator to write the output of the command to the following file
 
 head poeFor-windows-100k.bed
-# Display the first few lines of the bed file containing windows
+## Display the first few lines of the bed file containing windows
 
 ```
 
@@ -372,14 +373,14 @@ Now, we can use `bedtools intersect`, which also works with **VCF** files, to co
 
 ```bash
 
-## Write a bedtools intersect command to count how many SNPs overlap each 100kb window in the molly genome
-## data3/poeFor_NW_006799939.vcf
-## poeFor-windows-100k.bed
+### Write a bedtools intersect command to count how many SNPs overlap each 100kb window in the molly genome
+### data3/poeFor_NW_006799939.vcf
+### poeFor-windows-100k.bed
 
-## Write a bedtools intersect command to count how many SNPs overlap each 100kb window in the molly genome
+### Write a bedtools intersect command to count how many SNPs overlap each 100kb window in the molly genome
 
 head poeFor-windows-100k-snps.bed
-# Display the first few lines of the bed file containing windows and overlapping SNPs
+## Display the first few lines of the bed file containing windows and overlapping SNPs
 
 ```
 
@@ -388,15 +389,15 @@ head poeFor-windows-100k-snps.bed
 ```{r}
 
 library(tidyverse)
-# Load the tidyverse
+## Load the tidyverse
 
-## Write code in R to plot SNP density across the scaffold in our bed file
-# poeFor-windows-100k-snps.bed
+### Write code in R to plot SNP density across the scaffold in our bed file
+## poeFor-windows-100k-snps.bed
 
 
 ```
 
-# Scripts
+## Scripts
 
 So far, we've been focused on interactive analysis of small files. However, in real bioinformatics work, you will likely find yourself with many samples that you want to run the same commands on. And often these commands can require significant compute time, such that you want to be able to run these commands non-interactively. As nice as these markdown notebooks are for teaching and data exploration, they are not the ideal format for this task. Instead, what we want are scripts.
 
@@ -431,10 +432,10 @@ We now have a script we can run.
 ```bash
 
 chmod +x snp-density.sh
-# Make the script executable
+## Make the script executable
 
 ./snp-density.sh
-# ./ : Execute the following file as a shell script
+## ./ : Execute the following file as a shell script
 
 ```
 
@@ -451,7 +452,7 @@ Now, try running your script again, piping the output to head.
 ```bash
 
 ./snp-density.sh | head
-# ./ : Execute the following file as a shell script
+## ./ : Execute the following file as a shell script
 
 ```
 
@@ -478,11 +479,11 @@ To make our script flexible, we need to introduce the concept of variables. We'v
 ```bash
 
 TEXT="Hello World!"
-# = : Assign the variable name on the left to the value on the right
+## = : Assign the variable name on the left to the value on the right
 
 echo $TEXT
-# echo: A Unix command that simply prints the provided input to the screen
-# $ : A symbol that the shell understands to mean that the following is the name of a variable
+## echo: A Unix command that simply prints the provided input to the screen
+## $ : A symbol that the shell understands to mean that the following is the name of a variable
 
 ```
 
@@ -496,7 +497,7 @@ Note that when we access what is stored in the variable we use the `$` notation,
 ```bash
 
 ./snp-density.sh
-# ./ : Execute the following file as a shell script
+## ./ : Execute the following file as a shell script
 
 ```
 
@@ -532,7 +533,7 @@ Well, we can modify our script to take input from the command line as well. Shel
 ```bash
 
 ./snp-density.sh poeFor-windows-100k.bed data3/poeFor_NW_006799939.vcf 
-# ./ : Execute the following file as a shell script
+## ./ : Execute the following file as a shell script
 
 ```
 

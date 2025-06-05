@@ -38,12 +38,12 @@ Wednesday February 21st, 9:30 am - 12:30 pm, Location: [Northwest Building :octi
 Download the R Markdown file for the exercises and solutions:
 
 ```bash
-wget https://informatics.fas.harvard.edu/workshops/biotips/Biotips-workshop-2024-Day1-student.Rmd
+wget https://informatics.fas.harvard.edu/workshops/biotips/Biotips-workshop-Day1-student.Rmd
 ```
 
 View the rendered version with the exercises and solutions:
 
-[Biotips workshop Day 1 - Genomics formats & tools, part 1 :material-arrow-right:](Biotips-workshop-2024-Day1.md){ .md-button }
+[Biotips workshop Day 1 - Genomics formats & tools, part 1 :material-arrow-right:](Biotips-workshop-Day1.md){ .md-button }
 
 Download the data files used in the exercises (local setup only):
 
@@ -63,12 +63,12 @@ Thursday February 22nd, 9:30 am - 12:30 pm, Location: [Biolabs :octicons-link-ex
 Download the R Markdown file for the exercises and solutions:
 
 ```bash
-wget https://informatics.fas.harvard.edu/workshops/biotips/Biotips-workshop-2024-Day2-student.Rmd
+wget https://informatics.fas.harvard.edu/workshops/biotips/Biotips-workshop-Day2-student.Rmd
 ```
 
 View the rendered version with the exercises and solutions:
 
-[Biotips workshop Day 2 - Genomics formats & tools, part 2 :material-arrow-right:](Biotips-workshop-2024-Day2.md){ .md-button }
+[Biotips workshop Day 2 - Genomics formats & tools, part 2 :material-arrow-right:](Biotips-workshop-Day2.md){ .md-button }
 
 Download the data files used in the exercises (local setup only):
 
@@ -88,12 +88,12 @@ Wednesday February 28th, 9:30 am - 12:30 pm, Location: [Northwest Building :octi
 Download the R Markdown file for the exercises and solutions:
 
 ```bash
-wget https://informatics.fas.harvard.edu/workshops/biotips/Biotips-workshop-2024-Day3-student.Rmd
+wget https://informatics.fas.harvard.edu/workshops/biotips/Biotips-workshop-Day3-student.Rmd
 ```
 
 View the rendered version with the exercises and solutions:
 
-[Biotips workshop Day 3 - Shell scripting, part 1 :material-arrow-right:](Biotips-workshop-2024-Day3.md){ .md-button }
+[Biotips workshop Day 3 - Shell scripting, part 1 :material-arrow-right:](Biotips-workshop-Day3.md){ .md-button }
 
 Download the data files used in the exercises (local setup only):
 
@@ -113,12 +113,12 @@ Thursday February 29th, 9:30 am - 12:30 pm, Location: [Biolabs :octicons-link-ex
 Download the R Markdown file for the exercises and solutions:
 
 ```bash
-wget https://informatics.fas.harvard.edu/workshops/biotips/Biotips-workshop-2024-Day4-student.Rmd
+wget https://informatics.fas.harvard.edu/workshops/biotips/Biotips-workshop-Day4-student.Rmd
 ```
 
 View the rendered version with the exercises and solutions:
 
-[Biotips workshop Day 4 - Shell scripting, part 2 :material-arrow-right:](Biotips-workshop-2024-Day4.md){ .md-button }
+[Biotips workshop Day 4 - Shell scripting, part 2 :material-arrow-right:](Biotips-workshop-Day4.md){ .md-button }
 
 Download the data files used in the exercises (local setup only):
 

@@ -1,9 +1,10 @@
 ---
-title: "Harvard Informatics Bioinformatics Tips Workshop"
-subtitle: "Day 1: Bioinformatics command line tips and file formats"
+title: "Biotips Day 1: Bioinformatics command line tools and file formats"
 date: "February 21, 2024"
 author: "Danielle Khost, Adam Freedman, Lei Ma, Gregg Thomas"
-output: html_document
+output: 
+  html_document:
+    keep_md: true
 editor_options: 
   chunk_output_type: inline
 ---
@@ -25,17 +26,17 @@ pre code {
 
 
 
-Welcome to the first day of the [FAS Informatics](https://informatics.fas.harvard.edu/) [Bioinformatics Tips & Tricks workshop](https://harvardinformatics.github.io/workshops/2024-spring/biotips/)!
+Welcome to the first day of the [FAS Informatics](https://informatics.fas.harvard.edu/) Bioinformatics Tips & Tricks workshop!
 
-If you're viewing this file on the website, you are viewing the final, formatted version of the workshop. The workshop itself will take place in the RStudio program and you will *edit and execute the code in this file*. Please download the raw file [here](https://harvardinformatics.github.io/workshops/2024-spring/biotips/Biotips-workshop-2024_Day1-student.Rmd)
+If you're viewing this file on the website, you are viewing the final, formatted version of the workshop. The workshop itself will take place in the RStudio program and you will *edit and execute the code in this file*. Please download the raw file [here](Biotips-workshop-2024-Day1-student.Rmd)
 
 This is the workshop file that should be opened in RStudio. This is an RMarkdown file, meaning that both formatted text and code blocks can be added to it, and the code blocks can be executed from the RStudio interface. RStudio also has an easy to access **Terminal** tab which is how one would normally execute **Unix** commands. For this workshop, we will be going through this document and copy-pasting code blocks within it to run in the terminal to demonstrate some basic concepts. We will also be doing exercises directly in the terminal panel of RStudio. Once you've got the correct command, you can paste it into the RMarkdown document to keep a record.
 
-# Bioinformatic Tools, Part 1
+## Bioinformatic Tools, Part 1
 
 The first two days of this workshop are designed to get you familiar with the different types of common file formats you will often come across in many bioinformatics pipelines, and are designed to mimic the flow of a typical pipeline from raw sequence files to variants called against a reference genome. In this first session we will discuss sequence files and alignment files, as well as some tools and **commands** used to manipulate them!
 
-# A note on Unix commands
+## A note on Unix commands
 
 We should ground ourselves a bit before we get too into the weeds, simply by defining what we mean when we say the word **command**. A **command** is basically just an instruction to tell a program to do something. It is a chunk of code that someone has written that takes input, processes that input, and produces output. The really common and useful chunks of code (e.g. `ls` or `cd`) have become mainstays in modern operating systems to the extent that we don't even need to think about the underlying code, but it is there.
 
@@ -54,21 +55,21 @@ Some common file formats in data science simply encode **tables of data** with r
 
 In this workshop we will also see file formats specific for genomic data: sequences are encoded in `.fasta` or `.fastq` files, alignments of sequenced reads are encoded in `.sam` files, intervals in a genome are encoded in `.bed` files, and genomic variation relative to a reference genome is encoded in `.vcf` files. Though I will note that, with the exception of `.fasta` and `.fastq` files, these are all simply **tab delimited** files with columns specific to genomic data!
 
-For more information on some common genomics file formats, see here: <https://harvardinformatics.github.io/workshops/2024-spring/biotips/terms.html#formats>
+For more information on some common genomics file formats, see [here](https://harvardinformatics.github.io/workshops/2024-spring/biotips/terms.html#formats)>
 
 **One of the most important things I can tell you about bioinformatics is to always remember what file formats your data are in!**
 
-# A note on terminology
+## A note on terminology
 
 In the section above and throughout this workshop we use a lot of context dependent terms. For instance, you probably know what the word "command" means in general usage, but in the context of computer science it has a specific meaning that may not be obvious. This brings up an important point I try to remember when teaching. When learning a new skill or set of skills there's usually a whole new vocabulary to learn that goes along with it. What makes it difficult is that those teaching the new skill will use this vocabulary, and since they are so familiar with it they oftentimes won't even realize people don't know what the words they're using mean in the context of the new skillset.
 
 In an attempt to offset this unintentional language barrier we provide tables with some contextual definitions of terms we may use throughout the workshop at the following link:
 
-<https://harvardinformatics.github.io/workshops/2024-spring/biotips/terms.html>
+[Computing Glossary](https://informatics.fas.harvard.edu/resources/glossary/)
 
 If you see or hear any terms you think should be added to these tables, please let us know.
 
-# Setup
+## Setup
 
 To avoid having to either type out out long paths or copy workshop data to your local directory, we'll create a *symbolic link* (analogous to a Windows *shortcut*) in your current working directory called "data" that points to the workshop data directory.
 
@@ -79,20 +80,20 @@ To avoid having to either type out out long paths or copy workshop data to your 
 ```bash
 
 ln -s -f /n/holylfs05/LABS/informatics/Everyone/workshop-data/biotips-2024/day1 data1
-# ln: The Unix link command, which can create shortcuts to folders and files at the provided path to the second provided path
-# -s: This option tells ln to create a symbolic link rather than a hard link (original files are not changed)
-# -f: This option forces ln to create the link
+## ln: The Unix link command, which can create shortcuts to folders and files at the provided path to the second provided path
+## -s: This option tells ln to create a symbolic link rather than a hard link (original files are not changed)
+## -f: This option forces ln to create the link
 
 ls -l data1
-# Show the details of the new linked directory
+## Show the details of the new linked directory
 
 ```
 
 Now you can access a given file in that directory by simply referencing `data1/<filename>` in your code.
 
-# Sequence files
+## Sequence files
 
-## FASTA
+### FASTA
 
 Probably the most common file format used to represent biological sequences is the **FASTA** format (whose name is derived from a software package written in the 1980s). A FASTA file is composed of a number of *entries*, and can be either protein or nucleotide sequences. An "entry" can represent a number of things; for instance, if you were working with a FASTA file that you got back from the sequencing center, each entry would correspond to a single read off the sequencer. Alternatively, if you downloaded a whole genome assembly off NCBI, each entry would correspond to a scaffold or contig in the assembly.
 
@@ -134,7 +135,7 @@ OK, now let's actually look at the file! Since it is only a small test file, we 
 ```bash
 
 cat data1/test.fa
-# cat: A Unix command to display the contents of a file (or multiple files) to the screen
+## cat: A Unix command to display the contents of a file (or multiple files) to the screen
 
 ```
 
@@ -145,8 +146,8 @@ Let's also see how many lines are in the file.
 ```bash
 
 wc -l data1/test.fa
-# wc: the Unix word count command
-# -l: tells wc to only return the line count
+## wc: the Unix word count command
+## -l: tells wc to only return the line count
 
 ```
 
@@ -155,12 +156,12 @@ wc -l data1/test.fa
 
 ```bash
 
-## Write a command to print the first four lines of the FASTA file
-# data1/test.fa
+### Write a command to print the first four lines of the FASTA file
+## data1/test.fa
 
 ```
 
-## A note about getting help
+### A note about getting help
 
 We can see with the `wc` command that we are using the `-l` option to tell the command to count lines in our file. How do we find out about what other options this command might have? Well, searching the internet is fine, but most command line tools also have built in help.
 
@@ -176,11 +177,11 @@ man wc
 
 Tools that you install yourself, such as `samtools` that we will discuss later, usually don't have man pages. However, many programs have a command line help that can be accessed with the `-h` or `--help` options, or alternatively will display their help output if run with no arguments or options.
 
-## Back to fasta files
+### Back to fasta files
 
 Because they are so universal to bioinformatics, it is worthwhile to get comfortable with FASTA files and all the useful information we can pull out of them! To do so, let's look at our first command line tool:
 
-## Manipulating files with `grep`
+### Manipulating files with `grep`
 
 `grep` is a powerful command-line search tool that is included as part of Unix-like systems. At the most basic level, `grep` searches for a string of characters that match a pattern and will print lines containing a match. The basic syntax is as follow:
 
@@ -195,8 +196,8 @@ This may seem simple, but `grep` is one of the most useful tools in bioinformati
 ```bash
 
 grep '>' data1/test.fa
-# grep: The Unix string search command
-# '>': The string to search for in the provided file
+## grep: The Unix string search command
+## '>': The string to search for in the provided file
 
 ```
 
@@ -207,8 +208,8 @@ By default, `grep` will return a match if *any part of the string* matches your 
 
 ```bash
 
-## Write a command to display all lines with the 'c' character
-# data1/test.fa
+### Write a command to display all lines with the 'c' character
+## data1/test.fa
 
 ```
 
@@ -219,14 +220,14 @@ You can see that not only are we pulling out headers that do not correspond to c
 
 ```bash
 
-## Write a command to display all lines that correspond to chromosomes
-# data1/test.fa
+### Write a command to display all lines that correspond to chromosomes
+## data1/test.fa
 
 ```
 
 This is getting better...notice that by matching `>chr` we are correctly getting the line '>chromosome4', as it is still a partial match. However, we are still missing a sequence, '>Chr3'! This is because by default `grep` is *case-sensitive*. Thankfully, we can fix that.
 
-### Modifying `grep`
+#### Modifying `grep`
 
 `grep` can take a huge number of arguments that modify how it behaves (which you can always check by typing `man grep`), but here we will highlight just a few that are especially useful.
 
@@ -237,9 +238,9 @@ This is getting better...notice that by matching `>chr` we are correctly getting
 ```bash
 
 grep -i '>chr' data1/test.fa
-# grep: The Unix string search command
-# -i: An option the tells grep to ignore the case of the matches, e.g. >chr will match >CHr and >Chr, etc., as well as >chr
-# '>chr': The string to search for in the provided file
+## grep: The Unix string search command
+## -i: An option the tells grep to ignore the case of the matches, e.g. >chr will match >CHr and >Chr, etc., as well as >chr
+## '>chr': The string to search for in the provided file
 
 ```
 
@@ -250,9 +251,9 @@ grep -i '>chr' data1/test.fa
 ```bash
 
 grep -c '>' data1/test.fa
-# grep: The Unix string search command
-# -c: An option the tells grep to simply count the number of lines that contain the provided string
-# '>': The string to search for in the provided file
+## grep: The Unix string search command
+## -c: An option the tells grep to simply count the number of lines that contain the provided string
+## '>': The string to search for in the provided file
 
 ```
 
@@ -263,8 +264,8 @@ grep -c '>' data1/test.fa
 
 ```bash
 
-## Use grep to display only sequence lines (EXCLUDE header lines)
-# data1/test.fa
+### Use grep to display only sequence lines (EXCLUDE header lines)
+## data1/test.fa
 
 ```
 
@@ -281,9 +282,9 @@ We can use `grep -A` to pull out both the header and the sequence for a particul
 ```bash
 
 grep -A 1 '>chr1' data1/test.fa
-# grep: The Unix string search command
-# -A 1: An option the tells grep to display the line right after each line that contains the provided string as well as the line with the match
-# '>chr1': The string to search for in the provided file
+## grep: The Unix string search command
+## -A 1: An option the tells grep to display the line right after each line that contains the provided string as well as the line with the match
+## '>chr1': The string to search for in the provided file
 
 ```
 
@@ -294,10 +295,10 @@ Note that this is actually pulling out **two** entries, due to the partial match
 ```bash
 
 grep -A 1 -w '>chr1' data1/test.fa
-# grep: The Unix string search command
-# -A 1: An option the tells grep to display the line right after each line that contains the provided string as well as the line with the match
-# -w: This option tells grep to only print lines that EXACTLY match the provided string
-# '>chr1': The string to search for in the provided file
+## grep: The Unix string search command
+## -A 1: An option the tells grep to display the line right after each line that contains the provided string as well as the line with the match
+## -w: This option tells grep to only print lines that EXACTLY match the provided string
+## '>chr1': The string to search for in the provided file
 
 ```
 
@@ -309,8 +310,8 @@ grep -A 1 -w '>chr1' data1/test.fa
 
 ```bash
 
-## Write a grep command to search for a sequence motif and display the matched sequence and the header
-# data1/test.fa
+### Write a grep command to search for a sequence motif and display the matched sequence and the header
+## data1/test.fa
 
 
 ```
@@ -325,13 +326,13 @@ To create a text file, type `nano nameOfFile.txt`. This will open up a sub-windo
 ```bash
 
 nano matches.txt
-# nano: A Unix command to open a text file, which we called matches.txt
+## nano: A Unix command to open a text file, which we called matches.txt
 
-# 1. Type >chr2, hit 'Enter', then type >Chr3  
-# 2. Press Control+X to save and close the window
+## 1. Type >chr2, hit 'Enter', then type >Chr3  
+## 2. Press Control+X to save and close the window
 
 cat matches.txt
-# Display the contents of the new file to the screen
+## Display the contents of the new file to the screen
 
 ```
 
@@ -347,12 +348,12 @@ You should see the following text:
 ```bash
 
 grep -f matches.txt data1/test.fa
-# grep: The Unix string search command
-# -f: This option tells grep to read each line in the following file and search for lines in the provided file that contain any of the strings
+## grep: The Unix string search command
+## -f: This option tells grep to read each line in the following file and search for lines in the provided file that contain any of the strings
 
 ```
 
-## Regular expressions
+### Regular expressions
 
 One last way that we can modify how `grep` behaves is with *regular expressions*, a.k.a *regex*. Regex are patterns that describe a *set of strings*. In other words, they allow you to match complex patterns with `grep` (and other Unix commands), not just exact matches! Regex are extremely powerful and customizable, but can get very complicated, so we will just go over a few that are especially useful.
 
@@ -370,8 +371,8 @@ So a more careful way to count the number of entries in a FASTA file would be by
 ```bash
 
 grep -c '^>' data1/test.fa
-# grep: The Unix string search command
-# '^>': The string to search for in the provided file with ^ being the regular expression that matches the beginning of a line in a file
+## grep: The Unix string search command
+## '^>': The string to search for in the provided file with ^ being the regular expression that matches the beginning of a line in a file
 
 ```
 
@@ -382,13 +383,13 @@ grep -c '^>' data1/test.fa
 
 ```bash
 
-## Use grep and regex to display lines in the FASTA file that end with a number
-# data1/test.fa
+### Use grep and regex to display lines in the FASTA file that end with a number
+## data1/test.fa
 
 
 ```
 
-### A quick aside about quotes:  
+#### A quick aside about quotes:  
 
 A common point of confusion when running commands in the `bash` shell is whether to use single quote marks `'` or double quotes `"`. You might find that sometimes it doesn't seem to matter and the command will work both ways, but other times the command will not work as expected or will give an error.  
 
@@ -416,7 +417,7 @@ One final note: you might have even noticed that with `grep`, technically you do
 grep hello world file.txt
 ```
 
-## `grep` practice
+### `grep` practice
 
 Let's take a look at a FASTA file that more closely matches one that you might encounter in the wild. The file `data1/dmel-all-chromosome-r6.50.simple.fasta` is the *Drosophila melanogaster* genome assembly, though a simplified version in order to save space in our github repository :). We'll use this for the following exercises.
 
@@ -425,7 +426,7 @@ Let's take a look at a FASTA file that more closely matches one that you might e
 ```bash
 
 head data1/dmel-all-chromosome-r6.50.simple.fasta 
-# head: a Unix command to display the first 10 lines of the provided file
+## head: a Unix command to display the first 10 lines of the provided file
 
 ```
 
@@ -436,8 +437,8 @@ So you can see an actual FASTA file may be a lot more complicated than our test 
 
 ```bash
 
-## Use grep to display all "Unmapped_Scaffold"s
-# data1/dmel-all-chromosome-r6.50.simple.fasta 
+### Use grep to display all "Unmapped_Scaffold"s
+## data1/dmel-all-chromosome-r6.50.simple.fasta 
 
 ```
 
@@ -446,8 +447,8 @@ So you can see an actual FASTA file may be a lot more complicated than our test 
 
 ```bash
 
-## Count the number of lines that contain sequences and lines that are headers
-# data1/dmel-all-chromosome-r6.50.simple.fasta
+### Count the number of lines that contain sequences and lines that are headers
+## data1/dmel-all-chromosome-r6.50.simple.fasta
 
 ```
 
@@ -456,8 +457,8 @@ So you can see an actual FASTA file may be a lot more complicated than our test 
 
 ```bash
 
-## Write a command to display the header and sequence for chromosome 2R
-# data1/dmel-all-chromosome-r6.50.simple.fasta
+### Write a command to display the header and sequence for chromosome 2R
+## data1/dmel-all-chromosome-r6.50.simple.fasta
 
 ```
 
@@ -467,14 +468,14 @@ So you can see an actual FASTA file may be a lot more complicated than our test 
 
 ```bash
 
-## Write a command to count the number of sequences that end with TATTC_, where _ can be any other nucleotide
-# data1/dmel-all-chromosome-r6.50.simple.fasta
+### Write a command to count the number of sequences that end with TATTC_, where _ can be any other nucleotide
+## data1/dmel-all-chromosome-r6.50.simple.fasta
 
-## BONUS: Write a command to also find out the names of the scaffolds of these sequences
+### BONUS: Write a command to also find out the names of the scaffolds of these sequences
 
 ```
 
-## FASTQ files
+### FASTQ files
 
 The other type of sequence file format we will discuss is FASTQ, which as the name suggests, is similar to FASTA format but also contains **q**uality information about the sequence. You will commonly encounter FASTQ files when working with sequencing pipelines, as second generation technologies like Illumina as well as 3rd generation technologies like PacBio and Nanopore output their data in this format. Each entry is comprised of *four* lines, as opposed to the two of FASTA:
 
@@ -490,8 +491,8 @@ Let's look at an example file.
 ```bash
 
 head -n 8 data1/test.fq
-# head: a Unix command to display the first few lines of the provided file
-# -n 8: This option tells head to only display the first 8 lines of the file
+## head: a Unix command to display the first few lines of the provided file
+## -n 8: This option tells head to only display the first 8 lines of the file
 
 ```
 
@@ -510,9 +511,9 @@ Let's take a look at parsing **FASTQ** files for information. We can try to use 
 ```bash
 
 grep -c '^@' data1/test.fq
-# grep: The Unix string search command
-# -c: This option tells grep to simply count the number of lines that contain the provided string, rather than display the lines
-# '^@': The string to search for in the provided file with ^ being the regular expression that matches the beginning of a line in a file
+## grep: The Unix string search command
+## -c: This option tells grep to simply count the number of lines that contain the provided string, rather than display the lines
+## '^@': The string to search for in the provided file with ^ being the regular expression that matches the beginning of a line in a file
 
 ```
 
@@ -520,13 +521,13 @@ However, this is technically not a reliable way to do it! If we were to look at 
 
 To reliably count the entries in our file, let's look at our next bioinformatic tool, `awk`.
 
-## AWK
+### AWK
 
 Invented in the 1970's, `awk` is a scripting language included in Unix-like operating systems. It specializes in one-liner programs and manipulating text files, and like most scripting languages it is also capable of various mathematical and logical operations.
 
 In many cases, if you're parsing information from a text file, you could write a Python script... or you could do it with `awk` in a single line! This is intended just as a quick introduction to `awk`, we will go into more details in later workshops when we talk about interval files, where the power of `awk` really shines.
 
-### Syntax
+#### Syntax
 
 `awk` scripts are organized as:
 
@@ -539,8 +540,8 @@ Meaning that every time that the pattern is *true*, awk will execute the action 
 ```bash
 
 awk '{print}' data1/test.fa
-# awk: A command line scripting language command
-# '' : Within the single quotes is the user defined script for awk to run on the provided file
+## awk: A command line scripting language command
+## '' : Within the single quotes is the user defined script for awk to run on the provided file
 
 ```
 
@@ -557,17 +558,17 @@ Going back to our original question, we know that each entry in a FASTQ file has
 ```bash
 
 awk 'END{print NR / 4}' data1/test.fq
-# awk: A command line scripting language command
-# '' : Within the single quotes is the user defined script for awk to run on the provided file
+## awk: A command line scripting language command
+## '' : Within the single quotes is the user defined script for awk to run on the provided file
 
 ```
 This example scratches the surface of what can be done with `awk`. For a good reference for additional one-line `awk` commands for doing frequently performed operations, check out [awk one liners](https://www.pement.org/awk/awk1line.txt).
 
-# ALIGNMENT FILES
+## ALIGNMENT FILES
 
 Let's move on to the next step of our "pipeline." Once we have our sequence files, a next step would typically be to map them against a reference genome. This could be in the form of mapping RNAseq reads to calculate differential expression, mapping genomic DNA from a population to call variants, or numerous other applications. There are a number of different programs for mapping (e.g. [BWA](https://github.com/lh3/bwa), [STAR](https://github.com/alexdobin/STAR), [minimap2](https://github.com/lh3/minimap2)) and which you choose will vary based on your data type and experimental design, but the alignment file created will likely be interchangeable.
 
-## Intro to SAM/BAM format
+### Intro to SAM/BAM format
 
 SAM (Sequence Alignment/Map) format is one of the most common file formats produced by many different pieces of alignment software, both for long and short read sequence data. It is a tab delineated text file, with 11 mandatory fields, or columns, (listed below), plus header lines denoted with an `@` at the start of the line.
 
@@ -575,11 +576,11 @@ SAM files are human readable, but can be quite large. An alternate format is the
 
 Let's take a look at a SAM file. We could use the typical bash commands like `cat` or `less` to view it, but there is a better way. Namely using our next bioinformatic tool, `samtools`!
 
-## SAMtools
+### SAMtools
 
 [SAMtools](http://www.htslib.org/doc/samtools.html) is a suite of programs that are extremely useful for processing mapped reads and for downstream analysis. As stated above, SAM/BAM files from different programs are (mostly) interchangeable, so `samtools` will work with a file SAM/BAM file no matter what program produced it. It has a ton of functions (which you can check out on the [manual page](http://www.htslib.org/doc/samtools.html)), but we will go through several of the most common uses.
 
-### samtools view
+#### samtools view
 
 As the name suggests, this command lets you view the content of a SAM **or** BAM file (whereas if you tried opening a BAM file with something like `less`, it would be unreadable). Let's take a look at a file.
 
@@ -588,12 +589,12 @@ As the name suggests, this command lets you view the content of a SAM **or** BAM
 ```bash
 
 samtools view data1/file.sam | head -n 5
-# samtools: A suite of programs to process SAM/BAM files
-# view: The sub-program of samtools to execute
-# | : The Unix pipe operator to pass output from one command as input to another command
-# head: a Unix command to display the first few lines of the provided file
-# -n 5: This option tells head to only display the first 5 lines of the file
-## NOTE: ignore the "Broken pipe" and "error closing standard output" errors! This is just an artifact of our setup for the workshop today.
+## samtools: A suite of programs to process SAM/BAM files
+## view: The sub-program of samtools to execute
+## | : The Unix pipe operator to pass output from one command as input to another command
+## head: a Unix command to display the first few lines of the provided file
+## -n 5: This option tells head to only display the first 5 lines of the file
+### NOTE: ignore the "Broken pipe" and "error closing standard output" errors! This is just an artifact of our setup for the workshop today.
 
 ```
 
@@ -618,7 +619,7 @@ As stated above, our file is tab-separated with 11 columns, plus a series of opt
 
 SAM/BAM files can be intimidating to look at as they are very dense in information, so let's focus in on a few important parts.
 
-### SAM flags
+#### SAM flags
 
 The second column in a BAM/SAM file is the *bitwise flag*. The flag value is an integer, which is the sum of a series of decimal values that give information about how a read is mapped.
 
@@ -639,7 +640,7 @@ The second column in a BAM/SAM file is the *bitwise flag*. The flag value is an 
 
 So e.g., for a paired-end mapping data set, a flag = **99** (1+2+32+64) means the read is mapped along with its mate (1 and 2) and in the proper orientation (32 and 64). Don't worry about memorizing these, there are plenty of tools online that decode these flags for you, such as right [here](https://broadinstitute.github.io/picard/explain-flags.html).
 
-### Filtering reads
+#### Filtering reads
 
 While you don't need to know all the SAM flags, if there is one flag that is useful to have memorized it is **4**, which means the read is **unmapped**. Unmapped reads are most often filtered out, as many programs used in downstream analysis of SAM/BAM files only want mapped reads (and also to save space on disk!). You can filter reads containing a given flag using the `-f` (only take reads that match given flags) and `-F` (only take reads that do **NOT** match given flag) options in `samtools view`.
 
@@ -648,12 +649,12 @@ While you don't need to know all the SAM flags, if there is one flag that is use
 ```bash
 
 samtools view -F 4 data1/file.sam | head
-# samtools: A suite of programs to process SAM/BAM files
-# view: The sub-program of samtools to execute
-# -F 4: This option tells samtools to filter any reads with the "4" flag
-# | : The Unix pipe operator to pass output from one command as input to another command
-# head: a Unix command to display the first few lines of the provided file
-## NOTE: ignore the "Broken pipe" and "error closing standard output" errors! This is just an artifact of our setup for the workshop today.
+## samtools: A suite of programs to process SAM/BAM files
+## view: The sub-program of samtools to execute
+## -F 4: This option tells samtools to filter any reads with the "4" flag
+## | : The Unix pipe operator to pass output from one command as input to another command
+## head: a Unix command to display the first few lines of the provided file
+### NOTE: ignore the "Broken pipe" and "error closing standard output" errors! This is just an artifact of our setup for the workshop today.
 
 ```
 
@@ -670,12 +671,12 @@ Note this uses `-f`, not `-F`, which **RETAINS** reads with those flags rather t
 
 ```bash
 
-## Write two commands to count the number of reads in the file that are properly paired and those that are not properly paired
-# data1/file.sam
+### Write two commands to count the number of reads in the file that are properly paired and those that are not properly paired
+## data1/file.sam
 
 ```
 
-### Converting between SAM/BAM
+#### Converting between SAM/BAM
 
 Remember that **SAM** files are plain-text tab-delimited files that can be easily read. However, they can be huge and take up a lot of space on our servers, so a compressed version is used, called **BAM** files.
 
@@ -692,18 +693,18 @@ For converting SAM to BAM, we can still use `samtools view` but also include the
 ```bash
 
 samtools view -b -h -o file.bam data1/file.sam
-# samtools: A suite of programs to process SAM/BAM files
-# view: The sub-program of samtools to execute
-# -b: This option tells samtools view to convert the output to BAM format
-# -h: Retain the header lines in the input SAM/BAM file in the output
-# -o: This option tells samtools view to print the output to the provided file rather than to the screen
+## samtools: A suite of programs to process SAM/BAM files
+## view: The sub-program of samtools to execute
+## -b: This option tells samtools view to convert the output to BAM format
+## -h: Retain the header lines in the input SAM/BAM file in the output
+## -o: This option tells samtools view to print the output to the provided file rather than to the screen
 
 ls -l file.bam
-# List the info for the BAM file we created to confirm it exists
+## List the info for the BAM file we created to confirm it exists
 
 ```
 
-### Headers
+#### Headers
 
 Note the use of the `-h` argument in the command above. As a reminder, in addition to the 11 tab separated fields, SAM files also contain **header** lines that start with `@` and describe information about the sequences found in the file. The `-h` argument adds a header, which many programs require to recognize a SAM/BAM file as properly formatted. Remember to include it!
 
@@ -714,13 +715,13 @@ Let's see what adding the `-h` argument does, looking at the BAM file we just cr
 ```bash
 
 samtools view -h file.bam | head -n15
-# samtools: A suite of programs to process SAM/BAM files
-# view: The sub-program of samtools to execute
-# -h: Retain the header lines in the input SAM/BAM file in the output
-# | : The Unix pipe operator to pass output from one command as input to another command
-# head: a Unix command to display the first few lines of the provided file
-# -n 15: This option tells head to only display the first 15 lines of the file
-## NOTE: ignore the "Broken pipe" and "error closing standard output" errors! This is just an artifact of our setup for the workshop today.
+## samtools: A suite of programs to process SAM/BAM files
+## view: The sub-program of samtools to execute
+## -h: Retain the header lines in the input SAM/BAM file in the output
+## | : The Unix pipe operator to pass output from one command as input to another command
+## head: a Unix command to display the first few lines of the provided file
+## -n 15: This option tells head to only display the first 15 lines of the file
+### NOTE: ignore the "Broken pipe" and "error closing standard output" errors! This is just an artifact of our setup for the workshop today.
 
 ```
 
@@ -731,12 +732,12 @@ We can see the files starts with a series of lines starting with `@`, meaning th
 ```bash
 
 samtools view file.bam | head -n15
-# samtools: A suite of programs to process SAM/BAM files
-# view: The sub-program of samtools to execute
-# | : The Unix pipe operator to pass output from one command as input to another command
-# head: a Unix command to display the first few lines of the provided file
-# -n 15: This option tells head to only display the first 15 lines of the file
-## NOTE: ignore the "Broken pipe" and "error closing standard output" errors! This is just an artifact of our setup for the workshop today.
+## samtools: A suite of programs to process SAM/BAM files
+## view: The sub-program of samtools to execute
+## | : The Unix pipe operator to pass output from one command as input to another command
+## head: a Unix command to display the first few lines of the provided file
+## -n 15: This option tells head to only display the first 15 lines of the file
+### NOTE: ignore the "Broken pipe" and "error closing standard output" errors! This is just an artifact of our setup for the workshop today.
 
 ```
 
@@ -747,12 +748,12 @@ Note that if we don't specify that we want to print the header, `samtools view` 
 
 ```bash
 
-## Use samtools view to display ONLY the header of the BAM file
-# file.bam
+### Use samtools view to display ONLY the header of the BAM file
+## file.bam
 
 ```
 
-### Sorting and indexing a BAM file
+#### Sorting and indexing a BAM file
 
 Many functions of `samtools`, as well as many programs that do downstream analysis on BAM files, require that your BAM file be sorted by sequence (e.g. chromosome, if mapping to an assembly) and position, and also indexed to be searchable. We can accomplish both of these using two other functions of `samtools`, `sort` and `index`. Their syntax is as follows.
 
@@ -761,19 +762,19 @@ Many functions of `samtools`, as well as many programs that do downstream analys
 ```bash
 
 samtools sort -o file.sorted.bam file.bam
-# samtools: A suite of programs to process SAM/BAM files
-# sort: The sub-program of samtools to execute
-# -o: This option tells samtools view to print the output to the provided file rather than to the screen
+## samtools: A suite of programs to process SAM/BAM files
+## sort: The sub-program of samtools to execute
+## -o: This option tells samtools view to print the output to the provided file rather than to the screen
 
 ls -l file.sorted.bam
-# List the info for the BAM file we created to confirm it exists
+## List the info for the BAM file we created to confirm it exists
 
 samtools index file.sorted.bam
-# samtools: A suite of programs to process SAM/BAM files
-# index: The sub-program of samtools to execute
+## samtools: A suite of programs to process SAM/BAM files
+## index: The sub-program of samtools to execute
 
 ls -l file.sorted.bam.bai
-# List the info for the index file we created to confirm it exists
+## List the info for the index file we created to confirm it exists
 
 ```
 
@@ -794,23 +795,23 @@ That was a lot of info! Let's take everything that we have learned and organize 
 
 ```bash
 
-## Convert to BAM with header and without unmapped reads and then sort
-# data1/file.sam
+### Convert to BAM with header and without unmapped reads and then sort
+## data1/file.sam
 
-# List the info for the BAM file we created to confirm it exists
+## List the info for the BAM file we created to confirm it exists
 
-## Index the new BAM file
+### Index the new BAM file
 
-# List the info for the index file we created to confirm it exists
+## List the info for the index file we created to confirm it exists
 ```
 
 You should see files named `file.mapped.sorted.bam` and `file.mapped.sorted.bam.bai`!
 
-## Downstream analysis
+### Downstream analysis
 
 Now that our BAM is sorted and indexed, we can begin pulling useful information out of it. Let's look at several applications, using some of SAMtools (many) other functions.
 
-### Subsetting specific regions
+#### Subsetting specific regions
 
 The third and fourth columns of a SAM/BAM file denote the name of the reference sequence and the starting position that the query sequence (i.e. the sequence from your FASTA/FASTQ file) maps to. By default `samtools view` prints all alignments, but you can specify a specific chromosome by adding the chromosome name at the end of the command.
 
@@ -819,12 +820,12 @@ The third and fourth columns of a SAM/BAM file denote the name of the reference 
 ```bash
 
 samtools view file.mapped.sorted.bam 2 | head
-# samtools: A suite of programs to process SAM/BAM files
-# view: The sub-program of samtools to execute
-# 2: This tells samtools view to only display alignments from this region
-# | : The Unix pipe operator to pass output from one command as input to another command
-# head: a Unix command to display the first few lines of the provided file
-## NOTE: ignore the "Broken pipe" and "error closing standard output" errors! This is just an artifact of our setup for the workshop today.
+## samtools: A suite of programs to process SAM/BAM files
+## view: The sub-program of samtools to execute
+## 2: This tells samtools view to only display alignments from this region
+## | : The Unix pipe operator to pass output from one command as input to another command
+## head: a Unix command to display the first few lines of the provided file
+### NOTE: ignore the "Broken pipe" and "error closing standard output" errors! This is just an artifact of our setup for the workshop today.
 
 ```
 
@@ -835,14 +836,14 @@ This pulls out reads from the file that map to the chromosome named '2'. If we w
 
 ```bash
 
-## View only regions mapped to chromosome 2, position 200 to 1000. Pipe to head.
-# file.mapped.sorted.bam
+### View only regions mapped to chromosome 2, position 200 to 1000. Pipe to head.
+## file.mapped.sorted.bam
 
-## NOTE: ignore the "Broken pipe" and "error closing standard output" errors! This is just an artifact of our setup for the workshop today.
+### NOTE: ignore the "Broken pipe" and "error closing standard output" errors! This is just an artifact of our setup for the workshop today.
 
 ```
 
-### Calculating coverage
+#### Calculating coverage
 
 One of the most common things you will want to know about your mapped reads is their coverage and depth, as this can impact your confidence in the assembly, the validity of your SNP calls, etc. "Coverage" is defined as the percentage of positions that have *at least one base aligned to it* (think of it as how much sequence is covered by mapped reads), while "depth" can be thought of as the redundancy of coverage (i.e. how many bases are aligned to a particular sequence). There are many approaches you can take to calculate coverage and depth, several of which you can do with SAMtools.
 
@@ -853,8 +854,8 @@ One of the most common things you will want to know about your mapped reads is t
 ```bash
 
 samtools coverage file.mapped.sorted.bam
-# samtools: A suite of programs to process SAM/BAM files
-# coverage: The sub-program of samtools to execute
+## samtools: A suite of programs to process SAM/BAM files
+## coverage: The sub-program of samtools to execute
 
 ```
 
@@ -865,8 +866,8 @@ Like with `samtools view`, can also specify coordinates, although (annoyingly) t
 
 ```bash
 
-## Use the -r option with samtools coverage to display coverage info only for chromosome 2, positions 200 to 1000
-# file.mapped.sorted.bam
+### Use the -r option with samtools coverage to display coverage info only for chromosome 2, positions 200 to 1000
+## file.mapped.sorted.bam
 
 
 ```
@@ -878,9 +879,9 @@ As a quick way to visualize coverage, you can use the `-m` option create a histo
 ```bash
 
 samtools coverage -m file.mapped.sorted.bam -r 1:1-1000
-# samtools: A suite of programs to process SAM/BAM files
-# coverage: The sub-program of samtools to execute
-# -m: This option tells samtools coverage to display a text histogram, rather than a table
+## samtools: A suite of programs to process SAM/BAM files
+## coverage: The sub-program of samtools to execute
+## -m: This option tells samtools coverage to display a text histogram, rather than a table
 
 ```
 
@@ -891,18 +892,18 @@ This is a useful first-pass analysis or sanity check. However, a more thorough w
 ```bash
 
 samtools depth -a file.mapped.sorted.bam -r 1:1000-2000 | head
-# samtools: A suite of programs to process SAM/BAM files
-# depth: The sub-program of samtools to execute
-# -a: This tells samtools depth to display information for every position, even if coverage is 0
-# | : The Unix pipe operator to pass output from one command as input to another command
-# head: a Unix command to display the first few lines of the provided file
-## NOTE: ignore the "Broken pipe" and "error closing standard output" errors! This is just an artifact of our setup for the workshop today.
+## samtools: A suite of programs to process SAM/BAM files
+## depth: The sub-program of samtools to execute
+## -a: This tells samtools depth to display information for every position, even if coverage is 0
+## | : The Unix pipe operator to pass output from one command as input to another command
+## head: a Unix command to display the first few lines of the provided file
+### NOTE: ignore the "Broken pipe" and "error closing standard output" errors! This is just an artifact of our setup for the workshop today.
 
 ```
 
 This outputs a three column table, where the 1st column is the contig/scaffold/chromosome name, the 2nd is the position on that scaffold, and the 3rd is the depth (number of reads) over that base. This list is convenient for importing to programs like R, where you can plot e.g. a histogram showing the distribution of per-base depth, or distribution of depth over a contig.
 
-### Stats/flagstats
+#### Stats/flagstats
 
 Another useful function built into SAMtools is `samtools stats`, which gives some quick summary statistics about your mapping reads. The amount of information it generates is somewhat overkill in most cases, so we will just look at the summary, with the help of our old friend `grep`.
 
@@ -911,19 +912,19 @@ Another useful function built into SAMtools is `samtools stats`, which gives som
 ```bash
 
 samtools stats file.mapped.sorted.bam | grep '^SN' | cut -f 2-
-# samtools: A suite of programs to process SAM/BAM files
-# stats: The sub-program of samtools to execute
-# | : The Unix pipe operator to pass output from one command as input to another command
-# grep: The Unix string search command
-# '^SN': The string to search for in the provided file with ^ being the regular expression that matches the beginning of a line in a file
+## samtools: A suite of programs to process SAM/BAM files
+## stats: The sub-program of samtools to execute
+## | : The Unix pipe operator to pass output from one command as input to another command
+## grep: The Unix string search command
+## '^SN': The string to search for in the provided file with ^ being the regular expression that matches the beginning of a line in a file
 
 ```
 
 (`cut` is another command line tool. Don't worry too much about what it is doing here, but in short it is just trimming off a useless column at the start of the output)
 
-## Other useful SAMtools tricks
+### Other useful SAMtools tricks
 
-### Extracting a single sequence from a FASTA file
+#### Extracting a single sequence from a FASTA file
 
 A common task you might want to do is to extract a single sequence from a **FASTA** file, e.g. you just want to work on a small test chromosome for a pilot analysis. Although we learned how to do this with `grep` earlier today, `samtools` also has a way to do this, using the `faidx` command. This command also creates an **index** of a **FASTA** file with the `.fai` extension. This index is required for many downstream analyses. However, if you provided with a region in the same format we've seen before (scaffold:start-end), it will also extract that sequence.
 
@@ -932,14 +933,14 @@ A common task you might want to do is to extract a single sequence from a **FAST
 
 ```bash
 
-## Extract chromsome 2R, positions 200 to 300 from D.mel genome
-# data1/dmel-all-chromosome-r6.50.simple.fasta
+### Extract chromsome 2R, positions 200 to 300 from D.mel genome
+## data1/dmel-all-chromosome-r6.50.simple.fasta
 
 ```
 
 This is a very efficient way to extract sequences from a **FASTA** file (because `samtools` is very efficient!).
 
-### BAM to FASTQ/A
+#### BAM to FASTQ/A
 
 As SAM/BAM files contain both the sequence and the quality information for the aligned reads, it is very easy to convert back to sequence files! Just use `samtools fastq` or `samtools fasta`.
 
@@ -950,16 +951,16 @@ E.g. the following command will create a FASTQ file of only the mapped reads (as
 ```bash
 
 samtools fastq file.mapped.sorted.bam | head -n 12
-# samtools: A suite of programs to process SAM/BAM files
-# fastq: The sub-program of samtools to execute
-# | : The Unix pipe operator to pass output from one command as input to another command
-# head: a Unix command to display the first few lines of the provided file
-# -n 12: This option tells head to only display the first 12 lines of the file
-## NOTE: ignore the "Broken pipe" and "error closing standard output" errors! This is just an artifact of our setup for the workshop today.
+## samtools: A suite of programs to process SAM/BAM files
+## fastq: The sub-program of samtools to execute
+## | : The Unix pipe operator to pass output from one command as input to another command
+## head: a Unix command to display the first few lines of the provided file
+## -n 12: This option tells head to only display the first 12 lines of the file
+### NOTE: ignore the "Broken pipe" and "error closing standard output" errors! This is just an artifact of our setup for the workshop today.
 
 ```
 
-### Merge BAM files
+#### Merge BAM files
 
 You can combine multiple sorted BAM/SAM files, which can be useful if you have done multiple rounds of mapping:
 
@@ -969,6 +970,6 @@ samtools merge file.bam file2.bam ...
 
 Unless otherwise specified, the headers will also be merged.
 
-# End of Day 1
+## End of Day 1
 
 That's it for day 1! Join us tomorrow to learn about bed files and awk!

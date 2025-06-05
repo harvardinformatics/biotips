@@ -1,14 +1,15 @@
 ---
-title: "Harvard Informatics Bioinformatics Tips Workshop"
-subtitle: "Day 2: Bioinformatics command line tips and file formats"
+title: "Biotips Day 2: Bioinformatics command line tools and file formats"
 date: "February 22, 2024"
 author: "Gregg Thomas"
-output: html_document
+output: 
+  html_document:
+    keep_md: true
 editor_options: 
   chunk_output_type: inline
 ---
 
-```{css, echo=FALSE}
+<style type="text/css">
 
 pre {
   overflow-x: scroll
@@ -20,15 +21,17 @@ pre code {
 
 /* This makes the output blocks scroll horizontally in HTML renders */
 
-```
+</style>
 
-Welcome to the second day of the [FAS Informatics](https://informatics.fas.harvard.edu/) [Bioinformatics Tips & Tricks workshop](https://harvardinformatics.github.io/workshops/2024-spring/biotips/)!
+Welcome to the second day of the [FAS Informatics](https://informatics.fas.harvard.edu/) Bioinformatics Tips & Tricks workshop!
+
+If you're viewing this file on the website, you are viewing the final, formatted version of the workshop. The workshop itself will take place in the RStudio program and you will *edit and execute the code in this file*. Please download the raw file [here :octicons-download-24:](Biotips-workshop-Day2-student.Rmd)
 
 Today we're going to continue our tour and explanation of common genomics file formats and their associated tools by talking about interval files, that is files which indicate regions of a genome (.bed files, .gff files).
 
 We'll be learning about how to view and manipulate these files using both the native commands present in the Linux command line as well as tools developed specifically for these file formats.
 
-# Setting up our link to the data files  
+## Setting up our link to the data files  
 
 As with yesterday, we'll create a *symbolic link* (analogous to a Windows *shortcut*) in your current working directory called "data" that points to the workshop data directory.
 
@@ -38,22 +41,22 @@ As with yesterday, we'll create a *symbolic link* (analogous to a Windows *short
 
 mkdir -p data2
 ln -s -f /n/holylfs05/LABS/informatics/Everyone/workshop-data/biotips-2024/day2/* data2
-# ln: The Unix link command, which can create shortcuts to folders and files at the provided path to the second provided path
-# -s: This option tells ln to create a symbolic link rather than a hard link (original files are not changed)
-# -f: This option forces ln to create the link
+## ln: The Unix link command, which can create shortcuts to folders and files at the provided path to the second provided path
+## -s: This option tells ln to create a symbolic link rather than a hard link (original files are not changed)
+## -f: This option forces ln to create the link
 
 ls -l data2
-# Show the details of the files in the new linked directory
+## Show the details of the files in the new linked directory
 
 ```
 
-# Command input and output
+## Command input and output
 
 Just to begin, I wanted to take a second to re-iterate a few concepts we learned yesterday. In general, the aim of a lot of the **commands** we run is to take text in a file that is formatted in a specific way and manipulate or process that text. This is central to the Unix philosophy:
 
-**formatted text -\> command -\> processed text**
+**formatted text -> command -> processed text**
 
-## How do commands output text?
+### How do commands output text?
 
 1. By default, most commands simply **print their output to the screen**. While this doesn't immediately make sense when processing such large files, it is integral to be able to perform some other operations namely, **piping** and **redirecting**.
 
@@ -103,24 +106,24 @@ command1 -o output_file.txt input_file.txt | command2
 
 This will result in `output_file.txt` containing only the text processed by `command1`. Since the text from `command1` was written to the file, there is nothing to **pipe** to `command2`, which may or may not display an error.
 
-# Bed files
+## Bed files
 
 Today we'll talk about **bed** files. Bed files are used to indicate regions of a genome with each line in the file representing one region. The bed format is an extremely flexible format -- the regions contained within it can represent anything. In it's most basic and common form it is also an extremely *simple* format, consisting of three columns of text separated by a tab character. The first column represents the chromosome or assembly scaffold of the region, while the second indicates the starting coordinate and the third indicates the ending coordinate.
 
 Bed files might have the `.bed` extension, and while it is best practice to use a file extension that properly describes the format of a file it is not required. Any 3 column tab delimited file that has the columns we described is a **bed** file.
 
-## A warning about coordinate systems
+### A warning about coordinate systems
 We will talk about several different file types today that are used to reference locations in the genome. Unfortunately for all of us, for various reasons different file types use different coordinate styles. Bed files, which we will talk about first, use 0-based coordinates and do not include end base in the interval (technically, this is called a right-open interval). So in a bed file, an interval that includes the first 100 bases of a chromosome would have start=0, end=100. 
 
 Gff files in contrast use 1-based coordinates and do include both the start and the end base in the interval (technically, this is called a closed interval). So in a gff file, an interval that includes the first 100 bases of a chromosome would have start=1, end=100. 
 
 It is worth noting that while the 1-based closed format of GFF files is more intuitive to read, it does suffer some issues. In particular, it is impossible unambiguously encode a 0-length feature in a GFF file. 
 
-- Check [this post on BioStars](https://www.biostars.org/p/84686/) for a simple illustration of 0- vs. 1-based coordinate systems.
+- Check [this post on BioStars :octicons-link-external-24:](https://www.biostars.org/p/84686/){:target="_blank"} for a simple illustration of 0- vs. 1-based coordinate systems.
 
-## Bed file example - Macaque structural variants
+### Bed file example - Macaque structural variants
 
-Today we'll be working with a bed file that contains calls of structural variants (e.g. large deletions and duplications of segments of the genome; *abbreviated SVs*) from a small population of rhesus macaques (if you attended the R workshop earlier this month you might already be familiar with this dataset). [Rhesus macaques](https://en.wikipedia.org/wiki/Rhesus_macaque) are small, Old-World monkeys that are widespread across southern and eastern Asia and are a common model organism for the study of human disease and primate evolution. [We sequenced these genomes to study the evolution structural variation over different timescales](https://doi.org/10.1093/molbev/msaa303).
+Today we'll be working with a bed file that contains calls of structural variants (e.g. large deletions and duplications of segments of the genome; *abbreviated SVs*) from a small population of rhesus macaques (if you attended the R workshop earlier this month you might already be familiar with this dataset). [Rhesus macaques :octicons-link-external-24:](https://en.wikipedia.org/wiki/Rhesus_macaque){:target="_blank"} are small, Old-World monkeys that are widespread across southern and eastern Asia and are a common model organism for the study of human disease and primate evolution. [We sequenced these genomes to study the evolution structural variation over different timescales :octicons-link-external-24:](https://doi.org/10.1093/molbev/msaa303){:target="_blank"}.
 
 First thing we should do is *look at our data*. We can do this a couple of ways here. With the RStudio setup with the VDI, we can just use our file browser on the right to navigate to the path of the file and open it in the text editor (this panel).
 
@@ -144,10 +147,10 @@ In addition to this optional fourth column for an ID, **bed** files have several
 
 For more information on bed files and these extra columns, visit the following links:
 
-- [Description of bed files from bedtools](https://bedtools.readthedocs.io/en/latest/content/general-usage.html)
-- [Description of bed files from UCSC](http://genome.ucsc.edu/FAQ/FAQformat#format1)
+- [Description of bed files from bedtools :octicons-link-external-24:](https://bedtools.readthedocs.io/en/latest/content/general-usage.html){:target="_blank"}
+- [Description of bed files from UCSC :octicons-link-external-24:](http://genome.ucsc.edu/FAQ/FAQformat#format1){:target="_blank"}
 
-# Summarizing SVs from the command line
+## Summarizing SVs from the command line
 
 So imagine we get this **bed** file from our collaborator who has called these SVs, and the first thing we should do is get a general idea about the variants called. What can we do from the command line?
 
@@ -158,8 +161,8 @@ The most basic thing we'll want to know is how many structural variants have bee
 ```bash
 
 wc -l data2/macaque-svs-filtered.bed
-# wc: the Unix word count command
-# -l: tells wc to only return the line count
+## wc: the Unix word count command
+## -l: tells wc to only return the line count
 
 ```
 
@@ -170,20 +173,18 @@ Cool! We also may want to known how many of these SVs are deletions and how many
 
 ```bash
 
-## Count the number of deletions
-# data2/macaque-svs-filtered.bed
+### Count the number of deletions
+grep -c "DEL" data2/macaque-svs-filtered.bed
+### Count the number of deletions
 
-## Count the number of deletions
 
-
-## Count the number of duplications
-# data2/macaque-svs-filtered.bed
-
-## Count the number of duplications
+### Count the number of duplications
+grep -c "DUP" data2/macaque-svs-filtered.bed
+### Count the number of duplications
 
 ```
 
-# `awk` basics
+## `awk` basics
 
 So we have a lot more deletions than duplications. If we didn't have reason to believe that deletions are more common than duplications (which we think they are) we may want to ask our collaborator to re-check their calls. But we can do some more checking ourselves too. Maybe, on average, the deletions being called are smaller events than the duplications so it would be expected that there are more of them. To check whether that is the case, we could get the *average length of deletions and duplications* in our bed file. The first step of that is to get the **length** of each SV.
 
@@ -204,8 +205,8 @@ The simplest `awk` program we could right then, would be something like this.
 ```bash
 
 awk '{}' data2/macaque-svs-filtered.bed
-# awk: A command line scripting language command
-# '' : Within the single quotes is the user defined script for awk to run on the provided file
+## awk: A command line scripting language command
+## '' : Within the single quotes is the user defined script for awk to run on the provided file
 
 ```
 
@@ -218,8 +219,8 @@ The most basic action we can code for an `awk` program is the `print` command.
 ```bash
 
 awk '{print}' data2/macaque-svs-filtered.n20.bed
-# awk: A command line scripting language command
-# '' : Within the single quotes is the user defined script for awk to run on the provided file
+## awk: A command line scripting language command
+## '' : Within the single quotes is the user defined script for awk to run on the provided file
 
 ```
 
@@ -232,8 +233,8 @@ In `awk`, the **fields** or columns are identified by number and a special chara
 ```bash
 
 head data2/macaque-svs-filtered.n20.bed | awk '{print $3}'
-# awk: A command line scripting language command
-# '' : Within the single quotes is the user defined script for awk to run on the provided file
+## awk: A command line scripting language command
+## '' : Within the single quotes is the user defined script for awk to run on the provided file
 
 ```
 
@@ -244,14 +245,13 @@ Another functionality of `awk`, since it is a scripting language is that there a
 
 ```bash
 
-## Use awk to print the length of each SV
-# data2/macaque-svs-filtered.n20.bed
-
-## Use awk to print the length of each SV
+### Use awk to print the length of each SV
+awk '{print $3 - $2}' data2/macaque-svs-filtered.n20.bed
+### Use awk to print the length of each SV
 
 ```
 
-## A note on data types
+### A note on data types
 
 As a programmer (we are coding now!), **one of the most important things I can tell you about programming is to always remember what data types you are operating on!**
 
@@ -264,8 +264,8 @@ The command above worked because both column 3 and column 2 contain only **integ
 ```bash
 
 awk '{print $3 - $1}' data2/macaque-svs-filtered.n20.bed
-# awk: A command line scripting language command
-# '' : Within the single quotes is the user defined script for awk to run on the provided file
+## awk: A command line scripting language command
+## '' : Within the single quotes is the user defined script for awk to run on the provided file
 
 ```
 
@@ -273,7 +273,7 @@ This is only printing out the third column unchanged. `awk` is pretty good about
 
 All of which is to say (and to re-iterate) that you should **always remember what data types you are operating on!**
 
-# **Variables** in `awk`
+## **Variables** in `awk`
 
 In programming, **variables** are names given to pieces of information, allowing the information to be used later on in the program. The column numbers used by `awk` with the `$` notation are variables that are updated as every record is read.
 
@@ -292,8 +292,8 @@ Most of these pertain to how `awk` separates **records** and **fields**. Like an
 ```bash
 
 awk 'BEGIN{FS=":"}{print $1,$2,$3}' data2/macaque-svs-filtered.n20.bed
-# awk: A command line scripting language command
-# '' : Within the single quotes is the user defined script for awk to run on the provided file
+## awk: A command line scripting language command
+## '' : Within the single quotes is the user defined script for awk to run on the provided file
 
 ```
 
@@ -306,12 +306,12 @@ Now, the first field includes everything in the line up to the first colon in th
 ```bash
 
 awk '{print NR}' data2/macaque-svs-filtered.n20.bed
-# awk: A command line scripting language command
-# '' : Within the single quotes is the user defined script for awk to run on the provided file
+## awk: A command line scripting language command
+## '' : Within the single quotes is the user defined script for awk to run on the provided file
 
 ```
 
-# `awk` **patterns** and custom variables
+## `awk` **patterns** and custom variables
 
 Yesterday you learned a bit about **regular expressions** and how to use them with `grep`. Well, in actuality, `awk` is also using **regular expressions** to decide which **records** to display. By default, the blank regular expression (because none is provided) matches every line in the file, so every line is displayed. However, you can use `awk` similarly to `grep` to display and process lines that only match some pattern.
 
@@ -320,8 +320,8 @@ Yesterday you learned a bit about **regular expressions** and how to use them wi
 ```bash
 
 awk ' /<DUP>/ {print}' data2/macaque-svs-filtered.n20.bed
-# awk: A command line scripting language command
-# '' : Within the single quotes is the user defined script for awk to run on the provided file
+## awk: A command line scripting language command
+## '' : Within the single quotes is the user defined script for awk to run on the provided file
 
 ```
 
@@ -330,8 +330,8 @@ This should be equivalent to the following:
 ```bash
 
 grep "<DUP>" data2/macaque-svs-filtered.n20.bed
-# grep: The Unix string search command
-# "<DUP>": The string to search for in the provided file
+## grep: The Unix string search command
+## "<DUP>": The string to search for in the provided file
 
 ```
 
@@ -342,10 +342,9 @@ However, with `awk`, we can also process the output from the same command.
 
 ```bash
 
-## Use awk to print the length of every duplication
-# data2/macaque-svs-filtered.n20.bed
-
-## Use awk to print the length of every duplication
+### Use awk to print the length of every duplication
+awk '/<DUP>/ {print $3 - $2}' data2/macaque-svs-filtered.n20.bed
+### Use awk to print the length of every duplication
 
 ```
 
@@ -355,13 +354,13 @@ We can also print lines that contain information in a certain column using the s
 
 ```bash
 
-awk ' $1=="chrX"{print}' data2/macaque-svs-filtered.bed
-# awk: A command line scripting language command
-# '' : Within the single quotes is the user defined script for awk to run on the provided file
+awk ' $1=="chrX"{print};' data2/macaque-svs-filtered.bed
+## awk: A command line scripting language command
+## '' : Within the single quotes is the user defined script for awk to run on the provided file
 
 ```
 
-## `BEGIN` and `END`
+### `BEGIN` and `END`
 
 `awk` has two special patterns, `BEGIN` and `END`. These patterns are followed by instructions that are to be performed either before (`BEGIN`) or after (`END`) `awk` reads every record in the file. Recall that, by default, `awk` performs the specified actions on every **record** (line) in the input file. These two keywords allow us to perform summary tasks both before and after the records are read and processed.
 
@@ -370,18 +369,18 @@ awk ' $1=="chrX"{print}' data2/macaque-svs-filtered.bed
 ```bash
 
 awk ' BEGIN{sum=0} {sum++} END{print sum}' data2/macaque-svs-filtered.bed
-# awk: A command line scripting language command
-# '' : Within the single quotes is the user defined script for awk to run on the provided file
+## awk: A command line scripting language command
+## '' : Within the single quotes is the user defined script for awk to run on the provided file
 
 ```
 
 To break this down, we told `awk` that we want it to read every record in the bed file, but BEFORE doing that set the value of a new **variable** called `sum` to 0. Then, as every record is read, increment `sum` by 1 with the `++` operator. Finally, after all records have been read, print out the value of `sum`, which should now be the total number of lines in the file. Remember that `awk` already has a **variable** that does this, `NR`.
 
-In addition to the `++` operator, which adds 1 to a variable, it is useful to know about the `+=` operator, which adds whatever is on the right side of the equation to the variable on the left side. So we could have written the code above as `{sum += 1}`. The `++` operate is a shortcut when we just need to increment a variable, but the `+=` operator allows us to increment a variable by more than 1, or even by another variable (e.g., `{sum += $1}` would keep a running total of the first column of a file). 
+In addition to the `++` operator, which adds 1 to a variable, it is useful to know about the `+=` operator, which adds whatever is on the right side of the equation to the variable on the left side. So we could have written the code above as `{sum += 1}`. The `++` operator is a shortcut when we just need to increment a variable, but the `+=` operator allows us to increment a variable by more than 1, or even by another variable (e.g., `{sum += $1}` would keep a running total of the first column of a file). 
 
 This command introduces another key concept in `awk` programs: **user-defined variables**. Here, `sum` is not part of `awk`'s default namespace -- we create and manipulate this **variable** on our own. We could have easily called it something else (e.g. `random_data=0`), but `sum` seems to be a good descriptive name for its purpose. `record_count` would also be a good name for this.
 
-# Average SV length with `awk`
+## Average SV length with `awk`
 
 Great! Now we've got some new `awk` knowledge. Let's try and put it all together to calculate the *average length of all SVs* in our bed file.
 
@@ -396,10 +395,30 @@ Great! Now we've got some new `awk` knowledge. Let's try and put it all together
 
 ```bash
 
-## Write awk command to calculate average length of SVs
-# data2/macaque-svs-filtered.bed
+### Write awk command to calculate average length of SVs
+awk 'BEGIN{len_sum=0} {cur_len=$3-$2; len_sum = len_sum + cur_len} END{print len_sum / NR}' data2/macaque-svs-filtered.bed
+## Solution 1: explicit but long
 
-## Write awk command to calculate average length of SVs
+awk 'BEGIN{len_sum=0} {len_sum = len_sum + $3-$2} END{print len_sum / NR}' data2/macaque-svs-filtered.bed
+## Solution 2: calculate length without storing it in a intermediate variable
+
+awk '{len_sum = len_sum + $3-$2} END{print len_sum / NR}' data2/macaque-svs-filtered.bed
+## Solution 3: no need to initialize the summing variable, len_sum, since awk will start it at 0
+
+awk '{len_sum += $3-$2} END{print len_sum / NR}' data2/macaque-svs-filtered.bed
+## Solution 4: the += shortcut
+
+awk '{len_sum += $3-$2} END{if(NR > 0){print len_sum / NR}}' data2/macaque-svs-filtered.bed
+## Solution 5: checking to make sure the file is not empty (NR > 0)
+
+awk 'BEGIN{len_sum=0} {len_sum += $3-$2} END{if(NR > 0){print len_sum / NR}}' data2/macaque-svs-filtered.bed
+## Solution 6: back to initializing len_sum to be slightly more explicit
+
+### Write awk command to calculate average length of SVs
+
+#awk '{length += $3-$2} END{print length / NR}' data2/macaque-svs-filtered.bed
+## This won't work ... why?
+## length() is a function in awk, so you cannot use "length" as a variable name
 
 ```
 
@@ -410,28 +429,35 @@ Ok, so we now have the average length of ALL SVs. What about deletions and dupli
 
 ```bash
 
-## Calculate the average length of deletions
-# data2/macaque-svs-filtered.bed
+### Calculate the average length of deletions
+## data2/macaque-svs-filtered.bed
+awk 'BEGIN{num_dels=0} /<DEL>/{len_sum += $3-$2; num_dels+=1} END{if(num_dels > 0){print len_sum / num_dels}}' data2/macaque-svs-filtered.bed
+## awk solution
 
-## Calculate the average length of deletions
+grep "<DEL>" data2/macaque-svs-filtered.bed | awk '{len_sum += $3-$2} END{if(NR > 0){print len_sum / NR}}'
+## grep and pipe solution
+### Calculate the average length of deletions
 
 
-## Calculate the average length of duplications
-# data2/macaque-svs-filtered.bed
+### Calculate the average length of duplications
+## data2/macaque-svs-filtered.bed
+awk 'BEGIN{num_dups=0} /<DUP>/{len_sum += $3-$2; num_dups+=1} END{if(num_dups > 0){print len_sum / num_dups}}' data2/macaque-svs-filtered.bed
+## awk solution
 
-## Calculate the average length of duplications
+grep "<DUP>" data2/macaque-svs-filtered.bed | awk '{len_sum += $3-$2} END{if(NR > 0){print len_sum / NR}}'
+## grep and pipe solution
+### Calculate the average length of duplications
 
 ```
-
-# bedtools
+## bedtools
 
 We can do a lot of simple processing of **bed** files (and genomic files in general) with native bash commands like `grep`, `awk`, `wc`, etc. However, there are a lot of tasks that require software (commands) built specifically for these types of files. For bed files (and other interval files), **bedtools** is a great program. It has a wide range of functions for working with these files, and is particularly powerful when you are interested in the overlap between regions in two files.
 
 We'll only have time to go over a small number of **bedtools** functions in this workshop, so be sure to check out the bedtools website for more in-depth documentation on all its functions:
 
-[bedtools website](https://bedtools.readthedocs.io/en/latest/index.html)
+[bedtools website :octicons-link-external-24:](https://bedtools.readthedocs.io/en/latest/index.html){:target="_blank"}
 
-## bedtools getfasta
+### bedtools getfasta
 
 Given a set of genomic regions in a **bed** file, one common task you may want to accomplish is to get the *sequences* contained within those intervals from the genome. **bedtools** can do this with the `bedtools getfasta` command. You can type `bedtools getfasta -h` in the Terminal below to see some documentation about this command. To do this, you will need:
 
@@ -446,10 +472,10 @@ We've provided the genome file and its index for you, but to keep file sizes dow
 
 ```bash
 
-## Get only the SVs from chromosome 10 and save them to a new file
-# data2/macaque-svs-filtered.bed
-
-## Get only the SVs from chromosome 10 and save them to a new file
+### Get only the SVs from chromosome 10 and save them to a new file
+## data2/macaque-svs-filtered.bed
+grep "chr10" data2/macaque-svs-filtered.bed > data2/macaque-svs-filtered-chr10.bed
+### Get only the SVs from chromosome 10 and save them to a new file
 
 ```
 
@@ -460,14 +486,14 @@ Now let's get the actual sequences of our macaque SVs from chromosome 10 in **FA
 ```bash
 
 bedtools getfasta -fi data2/rheMac8.chr10.fa -bed data2/macaque-svs-filtered-chr10.bed -fo macaque-svs-filtered-chr10.fa
-# bedtools: A suite of programs to process bed files
-# getfasta: The sub-program of bedtools to execute
-# -fi: The genome fasta file as input
-# -bed: The bed file as input
-# -fo: The desired output fasta file
+## bedtools: A suite of programs to process bed files
+## getfasta: The sub-program of bedtools to execute
+## -fi: The genome fasta file as input
+## -bed: The bed file as input
+## -fo: The desired output fasta file
 
 head macaque-svs-filtered-chr10.fa
-# Display the first few lines of the new file with head
+## Display the first few lines of the new file with head
 
 ```
 
@@ -492,14 +518,14 @@ The downside of having multiple input files is that it makes **piping** with `|`
 ```bash
 
 grep chr10 data2/macaque-svs-filtered.bed | bedtools getfasta -fi data2/rheMac8.chr10.fa -fo macaque-svs-filtered-chr10.fa
-# grep: The Unix string search command
-# chr10: The string to search for in the provided file
-# | : The Unix pipe operator to pass output from one command as input to another command
-# bedtools: A suite of programs to process bed files
-# getfasta: The sub-program of bedtools to execute
-# -fi: The genome fasta file as input
-# -bed: The bed file as input
-# -fo: The desired output fasta file
+## grep: The Unix string search command
+## chr10: The string to search for in the provided file
+## | : The Unix pipe operator to pass output from one command as input to another command
+## bedtools: A suite of programs to process bed files
+## getfasta: The sub-program of bedtools to execute
+## -fi: The genome fasta file as input
+## -bed: The bed file as input
+## -fo: The desired output fasta file
 
 ```
 
@@ -507,26 +533,26 @@ This doesn't work because `bedtools getfasta` *requires* the `-bed` option to be
 
 Luckily, many bioinformatics tools have a shortcut help us **pipe** output to a specific input option.
 
-## Using `-` to pipe
+### Using `-` to pipe
 
 For tools that require an input file to be specified with a command line option (like `-bed` above), we may still want to **pipe** the output from another command to it. We can often do so with the `-` shortcut. Basically, when this is provided as an option in lieu of an actual path to a file, many commands read from the process's *standard input* (which in a pipeline would receive the *standard output* of the previous command in the pipeline) instead of a file.
 
 ```bash
 
 grep chr10 data2/macaque-svs-filtered.bed | bedtools getfasta -fi data2/rheMac8.chr10.fa -bed - -fo macaque-svs-filtered-chr10.fa
-# grep: The Unix string search command
-# chr10: The string to search for in the provided file
-# | : The Unix pipe operator to pass output from one command as input to another command
-# bedtools: A suite of programs to process bed files
-# getfasta: The sub-program of bedtools to execute
-# -fi: The genome fasta file as input
-# - : Another way to pipe the output from the previous command to the input of the current command when an input option is required
-# -bed: The bed file as input
-# -fo: The desired output fasta file
+## grep: The Unix string search command
+## chr10: The string to search for in the provided file
+## | : The Unix pipe operator to pass output from one command as input to another command
+## bedtools: A suite of programs to process bed files
+## getfasta: The sub-program of bedtools to execute
+## -fi: The genome fasta file as input
+## - : Another way to pipe the output from the previous command to the input of the current command when an input option is required
+## -bed: The bed file as input
+## -fo: The desired output fasta file
 
 
 head macaque-svs-filtered-chr10.fa
-# Display the first few lines of the new file with head
+## Display the first few lines of the new file with head
 ```
 
 Did you spot the difference between this command and the one above it?
@@ -536,23 +562,23 @@ Here, all we've added is `-bed -`, which tells `getfasta` that the input for the
 **Note that not all command-line tools accept this shortcut, but most of the ones we cover today do. The special file /dev/stdin can be used in most environments for commands that do not support `-` in this manner.**
 
 > **Exercise**:
-> Write a command that extracts the sequences of only the duplications in the **bed** file from the macaque chromosome 10 sequence. Output these sequences to a file called `macaque-svs-filtered-dups-chr10.fa`.
+> Write a command that extracts the sequences of only the duplications in the **bed** file from the macaque genome. Output these sequences to a file called `macaque-svs-filtered-chr10-dups.fa`.
 > **BONUS**: Figure out how to keep the SV name (4th column of **bed** file) as the header of the sequences in the output **FASTA** file (Hint: check the help menu of `bedtools getfasta`!).
 
 ```bash
 
-## Use grep and bedtools to extract sequences of duplications only
-# data2/macaque-svs-filtered.bed
-# data2/rheMac8.chr10.fa
+### Use grep and bedtools to extract sequences of duplications only
+## data2/macaque-svs-filtered.bed
+## data2/rheMac8.chr10.fa
+grep "<DUP>" data2/macaque-svs-filtered.bed | bedtools getfasta -fi data2/rheMac8.chr10.fa -bed - -name -fo macaque-svs-filtered-chr10-dups.fa
+### Use grep and bedtools to extract sequences of duplications only
 
-## Use grep and bedtools to extract sequences of duplications only
-
-head macaque-svs-filtered-chr10-dups.fa
-# View the first few lines of the file you created
+head macaque-svs-filtered-dups.fa
+## View the first few lines of the file you created
 
 ```
 
-## bedtools merge
+### bedtools merge
 
 Like we said, `bedtools` has a ton of features -- we could write a whole workshop about it. And I wanted to give one more example before we move on. Something else we might want to do with the regions in a bed file would be to **merge** ones that are overlapping or within some distance of each other. For instance, we may think the method we used to call SVs may be slightly inaccurate and is calling the same polymorphism as separate mutations in different individuals, so we want to merge overlapping events.
 
@@ -563,29 +589,29 @@ For this we can use `bedtools merge`. There is one catch, however.
 ```bash
 
 bedtools merge -i data2/macaque-svs-filtered.bed
-# bedtools: A suite of programs to process bed files
-# merge   : The sub-program of bedtools to execute
+## bedtools: A suite of programs to process bed files
+## merge   : The sub-program of bedtools to execute
 
 ```
 
-The input bed file must be **sorted**! There are a couple of ways we could do this. If you look at the [documentation](https://bedtools.readthedocs.io/en/latest/content/tools/merge.html) for `bedtools merge`, they suggest using the native Unix `sort` command. However, **bedtools** itself also has a `sort` command. Let's try that.
+The input bed file must be **sorted**! There are a couple of ways we could do this. If you look at the [documentation :octicons-link-external-24:](https://bedtools.readthedocs.io/en/latest/content/tools/merge.html){:target="_blank"} for `bedtools merge`, they suggest using the native Unix `sort` command. However, **bedtools** itself also has a `sort` command. Let's try that.
 
 > Run the code below to sort the bed file with macaque SVs and then merge overlapping SV calls:
 
 ```bash
 
 bedtools sort -i data2/macaque-svs-filtered.bed | bedtools merge > macaque-svs-filtered.sorted.merged.bed
-# bedtools: A suite of programs to process bed files
-# sort: The sub-program of bedtools to execute
-# -i: The input bed file
-# | : The Unix pipe operator to pass output from one command as input to another command
-# bedtools: A suite of programs to process bed files
-# merge: The sub-program of bedtools to execute
-# > : The Unix redirect operator to write the output of the command to the following file
+## bedtools: A suite of programs to process bed files
+## sort: The sub-program of bedtools to execute
+## -i: The input bed file
+## | : The Unix pipe operator to pass output from one command as input to another command
+## bedtools: A suite of programs to process bed files
+## merge: The sub-program of bedtools to execute
+## > : The Unix redirect operator to write the output of the command to the following file
 
 wc -l data2/macaque-svs-filtered.bed
 wc -l macaque-svs-filtered.sorted.merged.bed
-# Use wc -l to count the number of un-merged SVs in the original file and the number after merging
+## Use wc -l to count the number of un-merged SVs in the original file and the number after merging
 
 ```
 
@@ -599,17 +625,18 @@ Of course, in actuality we would only want to merge duplications with other dupl
 
 ```bash
 
-## Use the tools you've learned to merge only duplications with other duplications
-# data2/macaque-svs-filtered.bed
+### Use the tools you've learned to merge only duplications with other duplications
+grep "<DUP>" data2/macaque-svs-filtered.bed | bedtools sort | bedtools merge -d 1000 > macaque-svs-filtered-dups.sorted.merged.bed
 
-## Use the tools you've learned to merge only duplications with other duplications
+### Use the tools you've learned to merge only duplications with other duplications
 
-
-# Count the number of lines in the original file and the new file to confirm we merged some duplications
+grep -c "<DUP>" data2/macaque-svs-filtered.bed
+wc -l macaque-svs-filtered-dups.sorted.merged.bed
+## Count the number of lines in the original file and the new file to confirm we merged some duplications
 
 ```
 
-# End of Day 2
+## End of Day 2
 
 That's it for day 2! Join us next week to learn about GFF files, VCF files, and shell scripts.
 

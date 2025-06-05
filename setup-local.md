@@ -207,33 +207,33 @@ Use the following links to download the workshop file for each day.
 
 ##### Day 1 workshop file
 
-[Download the Day 1 workshop file by clicking here :octicons-download-24:](https://informatics.fas.harvard.edu/workshops/biotips/Biotips-workshop-2024-Day1-student.Rmd) or run the following command in your terminal: 
+[Download the Day 1 workshop file by clicking here :octicons-download-24:](https://informatics.fas.harvard.edu/workshops/biotips/Biotips-workshop-Day1-student.Rmd) or run the following command in your terminal: 
 
 ```bash
-wget https://informatics.fas.harvard.edu/workshops/biotips/Biotips-workshop-2024-Day1-student.Rmd
+wget https://informatics.fas.harvard.edu/workshops/biotips/Biotips-workshop-Day1-student.Rmd
 ```
 
 ##### Day 2 workshop file
 
-[Download the Day 2 workshop file by clicking here :octicons-download-24:](https://informatics.fas.harvard.edu/workshops/biotips/Biotips-workshop-2024-Day2-student.Rmd) or run the following command in your terminal: 
+[Download the Day 2 workshop file by clicking here :octicons-download-24:](https://informatics.fas.harvard.edu/workshops/biotips/Biotips-workshop-Day2-student.Rmd) or run the following command in your terminal: 
 
 ```bash
-wget https://informatics.fas.harvard.edu/workshops/biotips/Biotips-workshop-2024-Day2-student.Rmd
+wget https://informatics.fas.harvard.edu/workshops/biotips/Biotips-workshop-Day2-student.Rmd
 ```
 
 ##### Day 3 workshop file
 
-[Download the Day 3 workshop file by clicking here :octicons-download-24:](https://informatics.fas.harvard.edu/workshops/biotips/Biotips-workshop-2024-Day3-student.Rmd) or run the following command in your terminal: 
+[Download the Day 3 workshop file by clicking here :octicons-download-24:](https://informatics.fas.harvard.edu/workshops/biotips/Biotips-workshop-Day3-student.Rmd) or run the following command in your terminal: 
 
 ```bash
-wget https://informatics.fas.harvard.edu/workshops/biotips/Biotips-workshop-2024-Day3-student.Rmd
+wget https://informatics.fas.harvard.edu/workshops/biotips/Biotips-workshop-Day3-student.Rmd
 ```
 
 ##### Day 4 workshop file
-[Download the Day 4 workshop file by clicking here :octicons-download-24:](https://informatics.fas.harvard.edu/workshops/biotips/Biotips-workshop-2024-Day4-student.Rmd) or run the following command in your terminal: 
+[Download the Day 4 workshop file by clicking here :octicons-download-24:](https://informatics.fas.harvard.edu/workshops/biotips/Biotips-workshop-Day4-student.Rmd) or run the following command in your terminal: 
 
 ```bash
-wget https://informatics.fas.harvard.edu/workshops/biotips/Biotips-workshop-2024-Day4-student.Rmd
+wget https://informatics.fas.harvard.edu/workshops/biotips/Biotips-workshop-Day4-student.Rmd
 ```
 
 !!! important "Make sure the .Rmd files are in your workshop directory"
@@ -256,4 +256,4 @@ We also provide the rendered .html files for each day, complete with solutions t
 
 |     |     |     |     |
 | --- | --- | --- | --- |
-| [Day 1 - Genomics formats & tools, part 1 :material-arrow-right:](Biotips-workshop-2024-Day1.md){ .md-button } | [Day 2 - Genomics formats & tools, part 2 :material-arrow-right:](Biotips-workshop-2024-Day2.md){ .md-button } | [Day 3 - Shell scripting, part 1 :material-arrow-right:](Biotips-workshop-2024-Day3.md){ .md-button } | [Day 4 - Shell scripting, part 2 :material-arrow-right:](Biotips-workshop-2024-Day4.md){ .md-button } |
+| [Day 1 - Genomics formats & tools, part 1 :material-arrow-right:](Biotips-workshop-Day1.md){ .md-button } | [Day 2 - Genomics formats & tools, part 2 :material-arrow-right:](Biotips-workshop-Day2.md){ .md-button } | [Day 3 - Shell scripting, part 1 :material-arrow-right:](Biotips-workshop-Day3.md){ .md-button } | [Day 4 - Shell scripting, part 2 :material-arrow-right:](Biotips-workshop-Day4.md){ .md-button } |

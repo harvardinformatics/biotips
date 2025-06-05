@@ -1,18 +1,19 @@
 ---
-title: "Harvard Informatics Bioinformatics Tips Workshop"
-subtitle: "Day 4: Loops, conditionals and scripts"
+title: "Biotips Day 4: Shell scripting"
 date: "February 29, 2024"
 author: "Nathan Weeks, Gregg Thomas, Lei Ma, Tim Sackton"
-output: html_document
+output: 
+  html_document:
+    keep_md: true
 ---
 
-Welcome to the fourth day of the [FAS Informatics](https://informatics.fas.harvard.edu/) [Bioinformatics Tips and Tricks Workshop](https://harvardinformatics.github.io/workshops/2024-spring/biotips/)!
+Welcome to the fourth day of the [FAS Informatics](https://informatics.fas.harvard.edu/) Bioinformatics Tips and Tricks Workshop!
 
-If you're viewing this file on the website, you are viewing the final, formatted version of the workshop. The workshop itself will take place in the RStudio program and you will *edit the file while executing code in the terminal*. Please download the raw file [here](https://harvardinformatics.github.io/workshops/2024-spring/biotips/Biotips-workshop-2024_Day4-student.Rmd)
+If you're viewing this file on the website, you are viewing the final, formatted version of the workshop. The workshop itself will take place in the RStudio program and you will *edit the file while executing code in the terminal*. Please download the raw file [here :octicons-download-24:](Biotips-workshop-Day4-student.Rmd)
 
 Today you'll learn more about how to write scripts, control the behavior of your scripts using loops and conditional statements, and more!
 
-# Setting up our link to the data files  
+## Setting up our link to the data files  
 
 As with yesterday, we'll create a *symbolic link* (analogous to a Windows *shortcut*) in your current working directory called "data4" that points to the workshop data directory.
 
@@ -22,20 +23,20 @@ As with yesterday, we'll create a *symbolic link* (analogous to a Windows *short
 
 mkdir -p data4
 ln -s -f /n/holylfs05/LABS/informatics/Everyone/workshop-data/biotips-2024/day4/* data4
-# ln: The Unix link command, which can create shortcuts to folders and files at the provided path to the second provided path
-# -s: This option tells ln to create a symbolic link rather than a hard link (original files are not changed)
-# -f: This option forces ln to create the link
+## ln: The Unix link command, which can create shortcuts to folders and files at the provided path to the second provided path
+## -s: This option tells ln to create a symbolic link rather than a hard link (original files are not changed)
+## -f: This option forces ln to create the link
 
 ls -l data4
-# Show the details of the files in the new linked directory
+## Show the details of the files in the new linked directory
 
 ```
 
-# Part 1: The For loop
+## Part 1: The For loop
 
 We introduced scripting yesterday. If you need a refresher on how we developed our first script, the `data4` folder contains different iterations of "snp-density-*.sh" that step through the process. 
 
-## Why we might want loops
+### Why we might want loops
 
 Loops are useful if you want to repeat the same command multiple times, while changing something specific about that command each time. For example, on day 3 we counted the number of genes in the macaque annotation `.gff` file, but what if we wanted to know the number of genes in all the gff files across our data folders? Or what if we wanted to extract the different regions of the genome, like introns or exons from a `gff` file? Today we'll learn how to do those things using the "For" loop, which executes a sequence of commands once for each item in a list of items. 
 
@@ -43,20 +44,20 @@ Loops are useful if you want to repeat the same command multiple times, while ch
 
 ```bash
 
-# a simple loop
+## a simple loop
 for i in 1 2 3
 do
   echo $i
 done
-# for: loops over a list of values
-# i: this is the variable name of the current value in the list and can be used within the loop
-# in: a keyword that precedes the list of values to loop over
+## for: loops over a list of values
+## i: this is the variable name of the current value in the list and can be used within the loop
+## in: a keyword that precedes the list of values to loop over
 
 ```
 
 > **Note:** bash also has `while` loops that execute the loop body while a condition evaluates to true.
 
-## How to build a loop
+### How to build a loop
 
 The components of a loop are:
 
@@ -83,9 +84,9 @@ for i in 1 2 3
 do
   echo "some_command $i | another_command > $i-result.txt"
 done
-# for: loops over a list of values
-# i: this is the variable name of the current value in the list and can be used within the loop
-# in: a keyword that precedes the list of values to loop over
+## for: loops over a list of values
+## i: this is the variable name of the current value in the list and can be used within the loop
+## in: a keyword that precedes the list of values to loop over
 
 ```
 
@@ -94,15 +95,23 @@ Let's find out how many exercises there are in each RMarkdown document (student 
 > **Exercise**: Using the steps above, write a loop that will print out how many exercises there are in each Rmarkdown document `data4/Biotips-workshop-2023-Day1-student.Rmd`, `data4/Biotips-workshop-2023-Day2-student.Rmd`, and `data4/Biotips-workshop-2023-Day3-student.Rmd`. You can use the `grep -c` command to count the number of matches to "Exercise" in a file. When iterating over file name, it is a good idea to encase the variable name in double quotes so that any weird characters such as spaces in the file name are parsed correctly. Write your solution in the code block below.
 
 ```bash
-# The command we want to repeat is: grep -c 'Exercise'
-# The variable we want to change each time we run the command is: filename
-# The values we want to assign to the variable are: 
-# data3/Biotips-workshop-2024-Day1-student.Rmd 
-# data3/Biotips-workshop-2024-Day2-student.Rmd 
-# data3/Biotips-workshop-2024-Day3-student.Rmd
-# If we're unsure how it'll go, we can put echo in front of the command
+## The command we want to repeat is: grep -c 'Exercise'
+## The variable we want to change each time we run the command is: filename
+## The values we want to assign to the variable are: 
+## data3/Biotips-workshop-2024-Day1-student.Rmd 
+## data3/Biotips-workshop-2024-Day2-student.Rmd 
+## data3/Biotips-workshop-2024-Day3-student.Rmd
+## If we're unsure how it'll go, we can put echo in front of the command
 
-# Put your solution here:
+## Put your solution here:
+
+for filename in data3/Biotips-workshop-2024-Day1-student.Rmd data3/Biotips-workshop-2024-Day2-student.Rmd  data3/Biotips-workshop-2024-Day3-student.Rmd
+do
+    grep -c 'Exercise' "$filename"
+done
+## for: loops over a list of values
+## i: this is the variable name of the current value in the list and can be used within the loop
+## in: a keyword that precedes the list of values to loop over
 
 ```
 
@@ -138,8 +147,12 @@ Now let's figure out a command to get the exercises themselves. Sometimes it's e
 
 ```bash
 
-## An awk command that will print out all the exercises in the file data4/Biotips-workshop-2023-Day2-student.Rmd
-
+### An awk command that will print out all the exercises in the file data4/Biotips-workshop-2023-Day2-student.Rmd
+awk '/Exercise/,/^`/' data3/Biotips-workshop-2024-Day2-student.Rmd
+## OR
+awk '/Exercise/,/^$/' data3/Biotips-workshop-2024-Day2-student.Rmd
+## awk: A command line scripting language command
+## '' : Within the single quotes is the user defined script for awk to run on the provided file
 
 ```
 
@@ -151,13 +164,25 @@ Now let's figure out a command to get the exercises themselves. Sometimes it's e
 
 ```bash
 
-## A for loop that extracts all the exercises from the RMarkdown files and appends them to a file called exercises.txt
+### A for loop that extracts all the exercises from the RMarkdown files and appends them to a file called exercises.txt
+for filename in data3/Biotips-workshop-2024-Day1-student.Rmd data3/Biotips-workshop-2024-Day2-student.Rmd data3/Biotips-workshop-2024-Day3-student.Rmd
+do
+    awk '/^> \*\*Exercise/,/^$/' "$filename" >> exercises.txt
+done
+## for: loops over a list of values
+## filename: this is the variable name of the current value in the list and can be used within the loop
+## in: a keyword that precedes the list of values to loop over
+
+for filename in data3/*.Rmd
+do
+    awk '/^> \*\*Exercise/,/^$/' "$filename" >> exercises.txt
+done
 
 ```
 
 Now you can see how useful loops can be to process multiple files at once! 
 
-## Adding wildcards to your loop specifications
+### Adding wildcards to your loop specifications
 
 Enumerating all the files in your for loop can get tedious and messy. Since some of our files all share the same extension, we can use wildcards to specify all the files that match that extension. Wildcards get processed before the loop is run so it essentially generates the list of files the loop iterates over. 
 
@@ -169,9 +194,9 @@ for filename in data2/*.vcf
 do
     echo $filename
 done
-# for: loops over a list of values
-# filename: this is the variable name of the current value in the list and can be used within the loop
-# in: a keyword that precedes the list of values to loop over
+## for: loops over a list of values
+## filename: this is the variable name of the current value in the list and can be used within the loop
+## in: a keyword that precedes the list of values to loop over
 
 ```
 
@@ -185,9 +210,9 @@ for filename in data2/*.bcf
 do
     echo $filename
 done
-# for: loops over a list of values
-# filename: this is the variable name of the current value in the list and can be used within the loop
-# in: a keyword that precedes the list of values to loop over
+## for: loops over a list of values
+## filename: this is the variable name of the current value in the list and can be used within the loop
+## in: a keyword that precedes the list of values to loop over
 
 ```
 
@@ -195,11 +220,18 @@ done
 
 ```bash
 
+for filename in data3/*student.Rmd
+do
+    echo $filename
+done
+## for: loops over a list of values
+## filename: this is the variable name of the current value in the list and can be used within the loop
+## in: a keyword that precedes the list of values to loop over
 
 ```
 
 
-# Part 2: Using a loop in a script
+## Part 2: Using a loop in a script
 
 Last time, we practiced using a for loop in the command line to iterate over three .Rmd files and find the number of exercises in each. Today, we will start writing loops within scripts for added **reproducibility** and **portability**. In this section we'll walk you through how a script comes together conceptually. It starts with an idea for a single command that gradually gets too complicated to keep track of in your head.
 
@@ -209,9 +241,9 @@ We have previously used the `bedtools makewindows` function to generate a **bed*
 ```bash
 
 awk 'BEGIN{OFS="\t"}; $3=="exon"{print $1, $4-1, $5}' data3/poeFor_NW_006799939.gff > exon.bed
-# awk: A command line scripting language command
-# '' : Within the single quotes is the user defined script for awk to run on the provided file
-# > : The Unix redirect operator to write the output of the command to the following file
+## awk: A command line scripting language command
+## '' : Within the single quotes is the user defined script for awk to run on the provided file
+## > : The Unix redirect operator to write the output of the command to the following file
 
 ```
 
@@ -238,7 +270,13 @@ awk 'query{print}' file-to-awk
 
 ```bash
 
-## Write a for loop to create for different bed files, but only echo the command, do not run it
+for TYPE in exon CDS mRNA gene
+do
+    echo "awk -v type=$TYPE 'BEGIN{OFS=\"\t\"}; \$3==type {print \$1, \$4-1, \$5}' data3/poeFor_NW_006799939.gff > $TYPE.bed"
+done
+## for: loops over a list of values
+## TYPE: this is the variable name of the current value in the list and can be used within the loop
+## in: a keyword that precedes the list of values to loop over
 
 ```
 
@@ -248,7 +286,21 @@ Since we're creating four **bed** files, let's organize them by putting them all
 
 ```bash
 
-## Run the make-beds.sh script
+#!/bin/bash
+
+mkdir -p poeFor_beds
+
+for TYPE in exon CDS mRNA gene
+do
+    awk -v type=$TYPE 'BEGIN{OFS="\t"}; $3==type {print $1, $4-1, $5}' data3/poeFor_NW_006799939.gff | bedtools sort -i - | bedtools merge > poeFor_beds/$TYPE.bed
+done
+## for: loops over a list of values
+## TYPE: this is the variable name of the current value in the list and can be used within the loop
+## in: a keyword that precedes the list of values to loop over
+
+chmod +x make-beds.sh
+./make-beds.sh
+### Run the make-beds.sh script
 
 ```
 
@@ -258,7 +310,18 @@ Now we can run the script by typing `bash make-beds.sh` in the terminal. You sho
 
 ```bash
 
-## Run the modified make-beds.sh script
+#!/bin/bash
+
+GFF=$1
+mkdir -p poeFor_beds
+
+for TYPE in exon CDS mRNA gene
+do
+    awk -v type=$TYPE 'BEGIN{OFS="\t"}; $3==type {print $1, $4-1, $5}' $GFF | bedtools sort -i - | bedtools merge > poeFor_beds/$TYPE.bed
+done
+## for: loops over a list of values
+## TYPE: this is the variable name of the current value in the list and can be used within the loop
+## in: a keyword that precedes the list of values to loop over
 
 ```
 
@@ -271,18 +334,16 @@ We are almost done; let's make a few more using `bedtools complement`, which rep
 ```bash
 
 bedtools complement -i poeFor_beds/gene.bed -g data3/poeFor_NW_006799939.fasta.fai > poeFor_beds/intergenic.bed
-# bedtools: A suite of programs to process bed files
-# complement: The sub-program of bedtools to execute
-# -i: The input bed file
-# -g:  A genome size file, which needs two columns, the scaffold/chromosome name and the size of that feature
-# > : The Unix redirect operator to write the output of the command to the following file
+## bedtools: A suite of programs to process bed files
+## complement: The sub-program of bedtools to execute
+## -i: The input bed file
+## -g:  A genome size file, which needs two columns, the scaffold/chromosome name and the size of that feature
+## > : The Unix redirect operator to write the output of the command to the following file
 
 bedtools subtract -a poeFor_beds/gene.bed -b poeFor_beds/exon.bed | bedtools sort -i - | bedtools merge > poeFor_beds/intron.bed
 bedtools subtract -a poeFor_beds/exon.bed -b poeFor_beds/CDS.bed | bedtools sort -i - | bedtools merge > poeFor_beds/UTR.bed
-# Two commands that subtract bed intervals in one file (-b) from another (-a) and pipe both with | and - into other bedtools commands and
-# finally redirect to an output bed file.
-
-## Re-run the make-beds.sh script
+## Two commands that subtract bed intervals in one file (-b) from another (-a) and pipe both with | and - into other bedtools commands and
+## finally redirect to an output bed file.
 
 ```
 
@@ -290,7 +351,7 @@ Run `wc -l poeFor_beds/*.bed` to see how many lines are in each bed file. Note t
 
 ------
 
-## Looping over lists of files
+### Looping over lists of files
 
 In this section we'll work on another script to continue our analysis of the Amazon molly genome. We'll write a script that will calculate the SNP density for each of the different bed files we created in the previous section. We already have code for this from the previous session, which is reproduced below. (If you don't have the file already, create a file named `snp-density.sh` and copy the below code into it.):
 
@@ -339,7 +400,7 @@ Now let's start translating the **pseudocode** into real code. We'll start with 
 
 ```bash
 
-## A shell command to get a list of bed files and save it to a file
+### A shell command to get a list of bed files and save it to a file
 ls poeFor_beds/*.bed > bed_files.txt
 
 ```
@@ -358,7 +419,15 @@ This says that we're going to run the `cat` command on our file, but instead of 
 
 ```bash
 
-## A for loop that prints out the name of the files in bed_files.txt
+### A for loop that prints out the name of the files in bed_files.txt
+for BED in $(cat bed_files.txt)
+do
+    echo $BED
+done
+## for: loops over a list of values
+## BED: this is the variable name of the current value in the list and can be used within the loop
+## in: a keyword that precedes the list of values to loop over
+## $(cat bed_files.txt): this runs the cat command on the bed_files.txt file and uses it as input to the loop
 
 ```
 
@@ -368,7 +437,30 @@ Now we have all the parts we need to create our script.
 
 ```bash
 
-## Run snp-desnity-5.sh after you have created it
+## bed_list=a list of bed files
+## vcf_file=a vcf file
+
+## for each bed_file in the bed_list:
+##    print out "the snp density for <bed_file> is:"
+##    run bedtools intersect on the bed_file and the vcf_file then pipe it to the awk statement to get the snp density
+##    print out "----" as a spacer
+
+#!/bin/bash
+
+BEDFILES=$1
+VCF=$2
+
+for BEDFILE in $(cat $BEDFILES)
+do
+  echo "SNP density for $BEDFILE:"
+  bedtools intersect -c -a $BEDFILE -b $VCF | awk 'BEGIN{snps=0; lens=0} {snps+=$4; lens+=$3-$2} END{if(lens > 0){print snps/lens}}'
+  echo "---"
+done
+## for: loops over a list of values
+## BEDFILE: this is the variable name of the current value in the list and can be used within the loop
+## in: a keyword that precedes the list of values to loop over
+## $(cat bed_files.txt): this runs the cat command on the bed_files.txt file and uses it as input to the loop
+
 
 ```
 
@@ -386,9 +478,9 @@ You should see a file called `snp-densities.txt` in your data3 folder. Let's tak
 
 -------
 
-# Part 3: Conditional statements
+## Part 3: Conditional statements
 
-## if statements
+### if statements
 
 In this section, we'll get into some more advanced bash scripting concepts. We'll learn how to use **conditional statements** to control the flow of our scripts. **Conditional statements** can allow your script to make decisions based on the results of a command or the value of a variable, making it more responsive. Here is a simple example of a conditional statement:
 
@@ -400,7 +492,7 @@ if [[ -f "$FILE" ]]
 then
     echo "File $FILE exists."
 fi
-# if: a conditional statement which evaluates the expression contained in [[]] as true or false and executes the subsequent lines only if true
+## if: a conditional statement which evaluates the expression contained in [[]] as true or false and executes the subsequent lines only if true
 
 ```
 
@@ -447,7 +539,7 @@ then
   echo "should not see this!"
 fi
 
-# Note the use of the ! ("not") operator to negate the exit status of the command:
+## Note the use of the ! ("not") operator to negate the exit status of the command:
 if ! ls some-nonexistent-file
 then
   echo "uh oh, ls failed!"
@@ -460,12 +552,18 @@ Some commands assign different exit statuses to different error conditions; see 
 
 ```bash
 
-## Write a conditional statement that checks if a VCF file exists and prints out the header
-# data3/poeFor_NW_006799939.vcf
+### Write a conditional statement that checks if a VCF file exists and prints out the header
+FILE=data3/poeFor_NW_006799939.vcf
+
+if [[ -f "$FILE" ]]
+then
+    bcftools view -h "$FILE"
+fi
+## if: a conditional statement which evaluates the expression contained in [[]] as true or false and executes the subsequent lines only if true
 
 ```
 
-There are some particularly useful conditional tests built in to bash that let you check file properties (see the complete list [here](https://www.gnu.org/software/bash/manual/html_node/Bash-Conditional-Expressions.html)):
+There are some particularly useful conditional tests built in to bash that let you check file properties (see the complete list [here :octicons-link-external-24:](https://www.gnu.org/software/bash/manual/html_node/Bash-Conditional-Expressions.html){:target="_blank"}):
 
 `-e filename`
 : returns *True* if `filename` exists as a file or directory or symlink
@@ -487,11 +585,11 @@ You can also check string properties:
 `-n string`
 : returns *True* if `string` is not empty/null
 
-## Why we might want conditionals
+### Why we might want conditionals
 
 You might want to process a file only if it exists, or you might want to run different commands depending on the size or number of files. In a larger workflow, you can imagine that sometimes, you're cleaning a FASTQ file and all the reads get thrown out leaving you without an output cleaned FASTQ. You might want to be able to check for that condition and have the script report it to you and skip the subsquent steps. For the purposes of this workshops, we're going to be using conditionals for basic error checking in our `snp-density-5.sh` script. To do that, we will need to introduce if-else statements.
 
-## if-else statements
+### if-else statements
 
 The if-else statement is similar to the if statement, but it has an additional set of commands to run if the boolean value is false. Here's an example:
 
@@ -504,8 +602,8 @@ if [[ -f "$FILE" ]]; then
 else 
     echo "$FILE does not exist. Skipping subsequent steps."
 fi
-# if: a conditional statement which evaluates the expression contained in [[]] as true or false and executes the subsequent lines only if true
-# else: a conditional statement which follows an if statement and executes the subsequent lines only if that statement was false
+## if: a conditional statement which evaluates the expression contained in [[]] as true or false and executes the subsequent lines only if true
+## else: a conditional statement which follows an if statement and executes the subsequent lines only if that statement was false
 
 ```
 
@@ -513,7 +611,22 @@ fi
 
 ```bash
 
-## Run the modified snp-density-5.sh script
+#!/bin/bash
+
+BEDFILES=$1
+VCF=$2
+
+for BEDFILE in $(cat $BEDFILES)
+do
+    if [[ -f "$BEDFILE" ]]
+    then
+        echo "SNP density for $BEDFILE:"
+        bedtools intersect -c -a $BEDFILE -b $VCF | awk 'BEGIN{snps=0; lens=0} {snps+=$4; lens+=$3-$2} END{if(lens > 0){print snps/lens}}'
+        echo "---"
+    else
+        echo "$BEDFILE does not exist. Skipping this file."
+    fi
+done
 
 ```
 
@@ -541,16 +654,36 @@ done
 > **Exercise**: Modify your `snp-density-5.sh` script to check if the VCF file exists and exit the script if it doesn't. Test your script by giving running it like `bash snp-density-5.sh bed_files.txt fake_vcf.vcf` Write your solution in the code block below (and also modify it in your bash script). Hint: you may want to check if the VCF does NOT exist, which will save you an else statement. Also think about where you want to place this if statement to reduce the number of times the script performs the check. 
 
 ```bash
+#!/bin/bash
 
-## Run the modified snp-density-5.sh script
+BEDFILES=$1
+VCF=$2
+
+if [[ ! -f "$VCF" ]]
+then
+    echo "$VCF does not exist. Exiting script."
+    exit 1
+fi
+
+for BEDFILE in $(cat $BEDFILES)
+do
+    if [[ -f "$BEDFILE" ]]
+    then
+        echo "SNP density for $BEDFILE:"
+        bedtools intersect -c -a $BEDFILE -b $VCF | awk 'BEGIN{snps=0; lens=0} {snps+=$4; lens+=$3-$2} END{if(lens > 0){print snps/lens}}'
+        echo "---"
+    else
+        echo "$BEDFILE does not exist. Skipping this file."
+    fi
+done
 
 ```
 
-# Putting it all together for a robust script
+## Putting it all together for a robust script
 
 We've come a long way since the our first one-liner script `snp-density-1.sh`! Let's copy `snp-density-5.sh` to a new version called `snp-density-final.sh` where we'll put on the finishing touches that make the script easier to use, read, and monitor. 
 
-## Using if statements to print helpful usage messages
+### Using if statements to print helpful usage messages
 
 Imagine you come back to this script 6 months later, vaguely recalling that by running it, you can generate a report on SNP densities. However, you don't remember exactly how it works so you just naively run `bash snp-density-final.sh`. You just get the uninformative error below:
 
@@ -563,8 +696,34 @@ To save future you some confusion, we can use an if statement to print out how t
 > **Exercise**: Use and `if` statement to check whether both `BEDFILE` and `VCF` are given as arguments. Modify your script to print out a usage message if they are not and exit the script. If they are, then proceed with the rest of the script. Write your solution in the code block below (and also modify it in your bash script).
 
 ```bash
+#!/bin/bash
 
-## Run the snp-density-final.sh script
+BEDFILES=$1
+VCF=$2
+
+if [[ -z $BEDFILES || -z $VCF ]]
+then
+  echo "Usage: ./snp-density-final.sh <file of bed files to process> <vcf file>"
+  exit 1
+fi
+
+if [[ ! -f "$VCF" ]]
+then
+    echo "$VCF does not exist. Exiting script."
+    exit 1
+else
+    for BEDFILE in $(cat $BEDFILES)
+    do
+        if [[ -e $BEDFILE ]]
+        then
+            echo "SNP density for $BEDFILE:"
+            bedtools intersect -c -a $BEDFILE -b $VCF | awk 'BEGIN{snps=0; lens=0} {snps+=$4; lens+=$3-$2} END{if(lens > 0){print snps/lens}}'
+            echo "---"
+        else
+            echo "File $BEDFILE does not exist. Skipping!"
+        fi
+  done
+fi
 
 ```
 
@@ -581,11 +740,11 @@ FILE=$1
 if [[ $FILE == *.vcf ]]
 then
   echo "Processing VCF file with bcftools..."
-  # bcftools commands here
+  ## bcftools commands here
 elif [[ $FILE == *.bam ]]
 then
   echo "Processing BAM file with samtools..."
-  # samtools commands here
+  ## samtools commands here
 else
   echo "Unknown file type. Please provide a .vcf or .bam file."
   exit 1
@@ -593,8 +752,15 @@ fi
 
 ```
 
-## Documenting your script
+### Documenting your script
 
 In the last section we made our script more user friendly by adding a usage message if not all of the variables were given as arguments. We can also make our script more readable by adding a detailed description of how the script works in the file itself using comments. We highly encourage everyong to annotate their code with comments. It makes it easier for others (and future you) to understand. In the case of a script, documentation typically means adding a description of what the script does, what the inputs are, what the outputs are, and the author of the script to the top of the file. Here's an example of what that might look like:
 
 > **Exercise**: Add a description of what the script does, what the inputs are, what the outputs are, and the author of the script to the top of your `snp-density-final.sh` script. Write your solution in the code block below (and also modify it in your bash script).
+
+```bash
+#
+## This script takes a file of bed files and a VCF file and calculates average SNPs per base for each bed file
+## Usage: ./snp-density-final.sh <file of bed files to process> <vcf file>
+#
+```
