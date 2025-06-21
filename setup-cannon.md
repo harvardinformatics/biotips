@@ -129,7 +129,7 @@ On the day of class, use the following instructions to open the RStudio app on t
 
     ![VDI login](img/setup-1.png)
 
-3. Now, back in the VDI homepage in your browser, in the top right, click the Develop button and from the dropdown select My Sandbox Apps (Development). You may need to refresh the page to get the Develop button to appear and, depending on the size of your screen, the word "Develop" may not appear, instead only the icon may be visible. 
+3. Now, back in the VDI homepage in your browser, in the top right, click the Develop button and from the dropdown select My Sandbox Apps (Development). You may need to refresh the page to get the Develop button to appear and, depending on the size of your screen, the word "Develop" may not appear, instead only the `</>` icon may be visible. 
 
     !!! danger "Make sure you select the correct RStudio App"
 
