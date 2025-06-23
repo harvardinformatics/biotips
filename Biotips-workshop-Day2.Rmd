@@ -1,7 +1,7 @@
 ---
 title: "Biotips Day 2: Bioinformatics command line tools and file formats"
 date: "February 22, 2024"
-author: "Gregg Thomas"
+author: Gregg Thomas
 output: 
   html_document:
     keep_md: true

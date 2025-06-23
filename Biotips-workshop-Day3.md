@@ -1,7 +1,11 @@
 ---
 title: "Biotips Day 3: VCF files and shell scripts"
 date: "February 28, 2024"
-author: "Tim Sackton, Gregg Thomas, Lei Ma, Nathan Weeks"
+authors: 
+  - Tim Sackton
+  - Gregg Thomas 
+  - Lei Ma
+  - Nathan Weeks
 output: 
   html_document:
     keep_md: true

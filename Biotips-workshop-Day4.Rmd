@@ -1,7 +1,11 @@
 ---
 title: "Biotips Day 4: Shell scripting"
 date: "February 29, 2024"
-author: "Nathan Weeks, Gregg Thomas, Lei Ma, Tim Sackton"
+authors:
+  - Nathan Weeks
+  - Gregg Thomas
+  - Lei Ma
+  - Tim Sackton
 output: 
   html_document:
     keep_md: true

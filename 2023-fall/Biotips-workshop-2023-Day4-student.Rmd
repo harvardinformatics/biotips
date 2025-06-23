@@ -2,7 +2,11 @@
 title: "Harvard Informatics Bioinformatics Tips Workshop"
 subtitle: "Day 4: Loops, conditionals and scripts"
 date: "November 17, 2023"
-author: "Nathan Weeks, Gregg Thomas, Lei Ma, Tim Sackton"
+authors:
+  - Nathan Weeks
+  - Gregg Thomas
+  - Lei Ma
+  - Tim Sackton
 output: html_document
 ---
 

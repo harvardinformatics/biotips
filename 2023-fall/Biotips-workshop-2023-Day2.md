@@ -2,7 +2,7 @@
 title: "Harvard Informatics Bioinformatics Tips Workshop"
 subtitle: "Day 2: Bioinformatics command line tips and file formats"
 date: "March 23, 2023"
-author: "Gregg Thomas"
+author: Gregg Thomas
 output: 
   html_document:
     keep_md: true

@@ -2,7 +2,11 @@
 title: "Harvard Informatics Bioinformatics Tips Workshop"
 subtitle: "Day 1: Bioinformatics command line tips and file formats"
 date: "November 8, 2023"
-author: "Danielle Khost, Nathan Weeks, Lei Ma, Gregg Thomas"
+authors: 
+  - Danielle Khost
+  - Nathan Weeks
+  - Lei Ma
+  - Gregg Thomas
 output: html_document
 editor_options: 
   chunk_output_type: inline

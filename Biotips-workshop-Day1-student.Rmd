@@ -1,7 +1,11 @@
 ---
 title: "Biotips Day 1: Bioinformatics command line tools and file formats"
 date: "February 21, 2024"
-author: "Danielle Khost, Adam Freedman, Lei Ma, Gregg Thomas"
+authors: 
+  - Danielle Khost
+  - Adam Freedman
+  - Lei Ma
+  - Gregg Thomas
 output: 
   html_document:
     keep_md: true
