@@ -1,5 +1,6 @@
 ---
-title: "Biotips Day 1: Bioinformatics command line tools and file formats"
+title: "[Workshop] Biotips Day 1: Bioinformatics command line tools and file formats"
+description: "Introduction to FASTA, FASTQ, and SAM/BAM files, as well as grep, awk, and samtools."
 date: "February 21, 2024"
 authors: 
   - Danielle Khost
@@ -13,22 +14,7 @@ editor_options:
   chunk_output_type: inline
 ---
 
-
-<style type="text/css">
-
-pre {
-  overflow-x: scroll
-}
-
-pre code {
-  white-space: pre;
-}
-
-/* This makes the output blocks scroll horizontally in HTML renders */
-
-</style>
-
-
+# Biotips Day 1: Bioinformatics command line tools and file formats, part 1
 
 Welcome to the first day of the [FAS Informatics](https://informatics.fas.harvard.edu/) Bioinformatics Tips & Tricks workshop!
 
@@ -36,7 +22,7 @@ If you're viewing this file on the website, you are viewing the final, formatted
 
 This is the workshop file that should be opened in RStudio. This is an RMarkdown file, meaning that both formatted text and code blocks can be added to it, and the code blocks can be executed from the RStudio interface. RStudio also has an easy to access **Terminal** tab which is how one would normally execute **Unix** commands. For this workshop, we will be going through this document and copy-pasting code blocks within it to run in the terminal to demonstrate some basic concepts. We will also be doing exercises directly in the terminal panel of RStudio. Once you've got the correct command, you can paste it into the RMarkdown document to keep a record.
 
-## Bioinformatic Tools, Part 1
+## Bioinformatics Tools, Part 1
 
 The first two days of this workshop are designed to get you familiar with the different types of common file formats you will often come across in many bioinformatics pipelines, and are designed to mimic the flow of a typical pipeline from raw sequence files to variants called against a reference genome. In this first session we will discuss sequence files and alignment files, as well as some tools and **commands** used to manipulate them!
 
@@ -1002,3 +988,22 @@ Unless otherwise specified, the headers will also be merged.
 ## End of Day 1
 
 That's it for day 1! Join us tomorrow to learn about bed files and awk!
+
+---
+
+<!-- --------------------------------- -->
+<!-- Page specfic CSS -->
+
+<style type="text/css">
+
+pre {
+  overflow-x: scroll
+}
+
+pre code {
+  white-space: pre;
+}
+
+/* This makes the output blocks scroll horizontally in HTML renders */
+
+</style>

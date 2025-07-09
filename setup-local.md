@@ -1,34 +1,11 @@
 ---
-title: Biotips workshop - Local setup
+title: "[Workshop] Biotips - Local setup"
+description: "Setup instructions for the bioinformatics tips and tricks workshop on a local (personal) computer."
+author: Gregg Thomas
+author_header: Page maintainer
 ---
 
-<style>
-    table thead { display: none; }
-    .md-typeset table, 
-    .md-typeset th, 
-    .md-typeset td {
-        border: none !important;
-    }
-    /* Remove borders from table, th, and td */
-
-    .md-typeset__table tr:nth-child(even):hover,
-    .md-typeset__table tbody tr:nth-child(even):hover {
-        background-color: #f6f8fa !important;
-    }
-    .md-typeset__table tr:nth-child(odd):hover,
-    .md-typeset__table tbody tr:nth-child(odd):hover {
-        background-color: #ffffff !important;
-    }
-    /* Disable hover effect on table rows */
-
-    .md-button {
-        text-align: center !important;
-        justify-content: center !important;
-        align-items: center !important;
-        display: inline-flex !important;
-    }
-    /* Center the text in the button */
-</style>
+# Biotips workshop - Local setup
 
 These are instructions for those who cannot request a FASRC account and access the Cannon cluster! Data will be downloaded locally and you will need to install software on your computer to follow along with the workshop. Please confirm you have followed the instructions on this page BEFORE class by replying to the e-mail you received about the workshop. We will unfortunately be UNABLE to help you with these steps during class.
 
@@ -257,3 +234,38 @@ We also provide the rendered .html files for each day, complete with solutions t
 |     |     |     |     |
 | --- | --- | --- | --- |
 | [Day 1 - Genomics formats & tools, part 1 :material-arrow-right:](Biotips-workshop-Day1.md){ .md-button } | [Day 2 - Genomics formats & tools, part 2 :material-arrow-right:](Biotips-workshop-Day2.md){ .md-button } | [Day 3 - Shell scripting, part 1 :material-arrow-right:](Biotips-workshop-Day3.md){ .md-button } | [Day 4 - Shell scripting, part 2 :material-arrow-right:](Biotips-workshop-Day4.md){ .md-button } |
+
+---
+
+{{ author_row(page) }}
+
+<!-- --------------------------------- -->
+<!-- Page specfic CSS -->
+
+<style>
+    table thead { display: none; }
+    .md-typeset table, 
+    .md-typeset th, 
+    .md-typeset td {
+        border: none !important;
+    }
+    /* Remove borders from table, th, and td */
+
+    .md-typeset__table tr:nth-child(even):hover,
+    .md-typeset__table tbody tr:nth-child(even):hover {
+        background-color: #f6f8fa !important;
+    }
+    .md-typeset__table tr:nth-child(odd):hover,
+    .md-typeset__table tbody tr:nth-child(odd):hover {
+        background-color: #ffffff !important;
+    }
+    /* Disable hover effect on table rows */
+
+    .md-button {
+        text-align: center !important;
+        justify-content: center !important;
+        align-items: center !important;
+        display: inline-flex !important;
+    }
+    /* Center the text in the button */
+</style>

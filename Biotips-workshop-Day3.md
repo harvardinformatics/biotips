@@ -1,5 +1,6 @@
 ---
-title: "Biotips Day 3: VCF files and shell scripts"
+title: "[Workshop] Biotips Day 3: GFF and VCF files and shell scripts"
+description: "More on bedtools and introductions to more interval file formats (GFF, VCF) and shell scripting"
 date: "February 28, 2024"
 authors: 
   - Tim Sackton
@@ -10,6 +11,8 @@ output:
   html_document:
     keep_md: true
 ---
+
+# Biotips Day 3: Interval files and shell scriptsBiotips Day 3: Interval files and shell scripts
 
 Welcome to the third day of the [FAS Informatics](https://informatics.fas.harvard.edu/) Bioinformatics Tips and Tricks Workshop!
 

@@ -1,5 +1,6 @@
 ---
-title: "Biotips Day 2: Bioinformatics command line tools and file formats"
+title: "[Workshop] Biotips Day 2: Bioinformatics command line tools and file formats"
+description: "Introduction to interval files in the form of bed files and bedtools as well as much more on awk and piping and redirecting shell output."
 date: "February 22, 2024"
 author: Gregg Thomas
 output: 
@@ -9,19 +10,7 @@ editor_options:
   chunk_output_type: inline
 ---
 
-<style type="text/css">
-
-pre {
-  overflow-x: scroll
-}
-
-pre code {
-  white-space: pre;
-}
-
-/* This makes the output blocks scroll horizontally in HTML renders */
-
-</style>
+# Biotips Day 2: Bioinformatics command line tools and file formats, part 2
 
 Welcome to the second day of the [FAS Informatics](https://informatics.fas.harvard.edu/) Bioinformatics Tips & Tricks workshop!
 
@@ -640,4 +629,22 @@ wc -l macaque-svs-filtered-dups.sorted.merged.bed
 
 That's it for day 2! Join us next week to learn about GFF files, VCF files, and shell scripts.
 
+---
+
+<!-- --------------------------------- -->
+<!-- Page specfic CSS -->
+
+<style type="text/css">
+
+pre {
+  overflow-x: scroll
+}
+
+pre code {
+  white-space: pre;
+}
+
+/* This makes the output blocks scroll horizontally in HTML renders */
+
+</style>
 

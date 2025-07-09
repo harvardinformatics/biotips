@@ -1,35 +1,11 @@
 ---
-title: Biotips workshop - Cannon setup
+title: "[Workshop] Biotips - Cannon setup"
+description: "Setup instructions for the bioinformatics tips and tricks workshop on Harvard's Cannon cluster."
+author: Gregg Thomas
+author_header: Page maintainer
 ---
 
-<style>
-    table thead { display: none; }
-    .md-typeset table, 
-    .md-typeset th, 
-    .md-typeset td {
-        border: none !important;
-    }
-    /* Remove borders from table, th, and td */
-
-    .md-typeset__table tr:nth-child(even):hover,
-    .md-typeset__table tbody tr:nth-child(even):hover {
-        background-color: #f6f8fa !important;
-    }
-    .md-typeset__table tr:nth-child(odd):hover,
-    .md-typeset__table tbody tr:nth-child(odd):hover {
-        background-color: #ffffff !important;
-    }
-    /* Disable hover effect on table rows */
-
-    .md-button {
-        text-align: center !important;
-        justify-content: center !important;
-        align-items: center !important;
-        display: inline-flex !important;
-    }
-    /* Center the text in the button */
-    
-</style>
+# Biotips workshop - Cannon setup
 
 These are instructions for those who have or can request a FASRC account and have access to the Cannon cluster! If you cannot have a FASRC account, we have tried to provided a way for you to follow along in the workshop, but you will have to follow a [different set of setup instructions](setup-local.md).
 
@@ -235,3 +211,39 @@ We also provide the rendered .html files for each day, complete with solutions t
 |     |     |     |     |
 |-----|-----|-----|-----|
 | [Day 1 - Genomics formats & tools, part 1 :material-arrow-right:](Biotips-workshop-Day1.md){ .md-button } | [Day 2 - Genomics formats & tools, part 2 :material-arrow-right:](Biotips-workshop-Day2.md){ .md-button } | [Day 3 - Shell scripting, part 1 :material-arrow-right:](Biotips-workshop-Day3.md){ .md-button } | [Day 4 - Shell scripting, part 2 :material-arrow-right:](Biotips-workshop-Day4.md){ .md-button } |
+
+---
+
+{{ author_row(page) }}
+
+<!-- --------------------------------- -->
+<!-- Page specfic CSS -->
+
+<style>
+    table thead { display: none; }
+    .md-typeset table, 
+    .md-typeset th, 
+    .md-typeset td {
+        border: none !important;
+    }
+    /* Remove borders from table, th, and td */
+
+    .md-typeset__table tr:nth-child(even):hover,
+    .md-typeset__table tbody tr:nth-child(even):hover {
+        background-color: #f6f8fa !important;
+    }
+    .md-typeset__table tr:nth-child(odd):hover,
+    .md-typeset__table tbody tr:nth-child(odd):hover {
+        background-color: #ffffff !important;
+    }
+    /* Disable hover effect on table rows */
+
+    .md-button {
+        text-align: center !important;
+        justify-content: center !important;
+        align-items: center !important;
+        display: inline-flex !important;
+    }
+    /* Center the text in the button */
+    
+</style>

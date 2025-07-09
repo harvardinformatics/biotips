@@ -1,5 +1,6 @@
 ---
-title: "Biotips Day 4: Shell scripting"
+title: "[Workshop] Biotips Day 4: Shell scripting"
+description: "More on shell scripting for bioinformatics, including programming basics such as loops and conditional statements"
 date: "February 29, 2024"
 authors:
   - Nathan Weeks
@@ -10,6 +11,8 @@ output:
   html_document:
     keep_md: true
 ---
+
+# Biotips Day 4: Shell scripting
 
 Welcome to the fourth day of the [FAS Informatics](https://informatics.fas.harvard.edu/) Bioinformatics Tips and Tricks Workshop!
 

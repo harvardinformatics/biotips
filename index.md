@@ -1,5 +1,6 @@
 ---
-title: Unix tips and tricks for bioinformatics
+title: "[Workshop] Unix tips and tricks for bioinformatics"
+description: Multi-day workshop from Harvard FAS Informatics on Unix tips, bioinformatics file formats, sequence processing tools, and scripting basics.
 authors:
     - Adam Freedman
     - Danielle Khost
@@ -8,6 +9,8 @@ authors:
     - Gregg Thomas
 author_header: Workshop Developers
 ---
+
+# Unix tips and tricks for bioinformatics <small>(aka Biotips)</small>
 
 {{ author_row(page) }}
 
