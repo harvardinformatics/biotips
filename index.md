@@ -7,6 +7,7 @@ authors:
     - Lei Ma
     - Tim Sackton    
     - Gregg Thomas
+    - Nathan Weeks
 author_header: Workshop Developers
 ---
 
