@@ -1,6 +1,15 @@
 ---
 title: Unix tips and tricks for bioinformatics
+authors:
+    - Adam Freedman
+    - Danielle Khost
+    - Lei Ma
+    - Tim Sackton    
+    - Gregg Thomas
+author_header: Workshop Developers
 ---
+
+{{ author_row(page) }}
 
 This workshop aims to introduce students to some basic bioinformatics file formats, tools, and general best practices. The first two days of the workshop will be dedicated to introductions of bioinformatics file formats and the command line tools that we use to view, manipulate, and analyze them. After that, we will begin to shift from using individual commands to writing shell scripts and constructing bioinformatics workflows.
 
@@ -125,3 +134,5 @@ Download the data files used in the exercises (local setup only):
 ```bash
 wget https://informatics.fas.harvard.edu/workshops/biotips/data/data4.zip
 ```
+
+---
