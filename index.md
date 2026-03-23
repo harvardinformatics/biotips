@@ -10,13 +10,13 @@ author_header: Workshop Developers
 
 {{ author_row(page) }}
 
-This is a four-part beginner workshop designed to help researchers build confidence in taking a practical “first pass” look at genomics data on the command line. The goal is not to teach in-depth scripting in Bash, Python, or LLM-based workflows, but to help participants develop a hands-on feel for common bioinformatics file formats, the basic tools available for inspecting them, and the kinds of questions they can answer quickly when something looks off. 
+This is a four-part beginner workshop designed to help researchers build confidence in taking a practical first pass look at genomics data on the command line. The goal is not to teach in-depth scripting in Bash, Python, or LLM-based workflows, but to help participants develop a hands-on feel for common bioinformatics file formats, the basic tools available for inspecting them, and the kinds of questions they can answer quickly when something looks off. 
 
 By the end of the workshop, students will:
 
-* be familiar with the “ingredients” available to them for pulling out overviews 
-* know to to begin troubleshooting problems
-* start developing the bioinformatics “sixth sense” about their data
+* be familiar with the “ingredients” (aka command line tools to look at ones data) available to them for pulling out overviews 
+* know where to begin troubleshooting problems
+* start developing the bioinformatics intuition about their data (e.g. "this file looks weird, I wonder if it's because of X?")
 
 We will be working with common file types including sequence files (FASTA/Q), alignment files (BAM/SAM), and tabular genomic data such as TSV, CSV, BED, GFF, and GTF. 
 
