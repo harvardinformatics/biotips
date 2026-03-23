@@ -18,9 +18,9 @@ By the end of the workshop, students will:
 * know where to begin troubleshooting problems
 * start developing the bioinformatics intuition about their data (e.g. "this file looks weird, I wonder if it's because of X?")
 
-We will be working with common file types including sequence files (FASTA/Q), alignment files (BAM/SAM), and tabular genomic data such as TSV, CSV, BED, GFF, and GTF. 
-
 The class will be structured around a series of example file format issues that students will likely encounter and that we will work through the diagnosis and troubleshooting of together. We will be using a combination of command line tools such as `grep`, `awk`, `samtools`, `bedtools`, and `bcftools` to explore the data and answer questions about it.
+
+We will be working with common file types including sequence files (FASTA/Q), alignment files (BAM/SAM), and tabular genomic data such as TSV, CSV, BED, GFF, and GTF. 
 
 This workshop assumes you have some basic knowledge of the Linux command line. If you know several simple commands like `ls`, `cd`, `cp`, and `mv` you should be ok. However, we will go over all the basics on the first day. 
 
