@@ -45,7 +45,7 @@ Thursday April 2nd, 9:30 am - 12:30 pm, Location: [Northwest Building :octicons-
 * Using `seqtk` to inspect and summarize FASTQ files
 * Practical problems: What's wrong with my file??
 
-[Open Jupyter notebook :simple-googlecolab:](#){ .md-button .is-disabled }
+[Open Jupyter notebook :simple-googlecolab:](https://colab.research.google.com/github/harvardinformatics/biotips/blob/main/genomeCL_day1.ipynb){ .md-button }
 - [View Jupyter notebook (non-interactive) :material-arrow-right:](#){ .md-button .is-disabled }
 
 ### Day 2: BAM/SAM and other alignment formats
