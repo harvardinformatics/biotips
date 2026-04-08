@@ -1,6 +1,6 @@
 # Genomics Command Line Day 1 Cheat Sheet
 
-Quick reference for the commands used in [genomeCL_day1.ipynb](/Users/daniellekhost/github/biotips/genomeCL_day1.ipynb).
+Quick reference for the commands used in [genomeCL_day1.ipynb](https://github.com/harvardinformatics/biotips/blob/main/genomeCL_day1.ipynb).
 
 ## Setup and Navigation
 

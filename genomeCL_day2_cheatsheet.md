@@ -1,6 +1,6 @@
 # Genomics Command Line Day 2 Cheat Sheet
 
-Quick reference for the commands used in [genomeCL_day2.ipynb](/Users/daniellekhost/github/biotips/genomeCL_day2.ipynb).
+Quick reference for the commands used in [genomeCL_day2.ipynb](https://github.com/harvardinformatics/biotips/blob/main/genomeCL_day2.ipynb).
 
 
 ## `samtools view`
