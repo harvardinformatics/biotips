@@ -72,7 +72,7 @@ Thursday April 16th, 9:30 am - 12:30 pm, Location: [Northwest Building :octicons
 * Using `bedtools` to inspect and manipulate interval files
 
 
-[Open Jupyter notebook :simple-googlecolab:](){ .md-button .is-disabled }
+[Open Jupyter notebook :simple-googlecolab:](https://colab.research.google.com/github/harvardinformatics/biotips/blob/main/genomeCL_day3.ipynb){ .md-button }
 - [View Jupyter notebook (non-interactive) :material-arrow-right:](){ .md-button .is-disabled }
 
 
