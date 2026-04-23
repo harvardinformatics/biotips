@@ -84,7 +84,7 @@ Thursday April 23rd, 9:30 am - 12:30 pm, Location: [Northwest Building :octicons
 * Other common tabular formats: GTF/GFF, VCF
 * Introduction to [`bcftools` :octicons-link-external-24:](https://samtools.github.io/bcftools/bcftools.html){:target="_blank"}
 
-[Open Jupyter notebook :simple-googlecolab:](){ .md-button .is-disabled }
+[Open Jupyter notebook :simple-googlecolab:](https://colab.research.google.com/github/harvardinformatics/biotips/blob/main/genomeCL_day4.ipynb){ .md-button }
 - [View Jupyter notebook (non-interactive) :material-arrow-right:](){ .md-button .is-disabled }
 
 
